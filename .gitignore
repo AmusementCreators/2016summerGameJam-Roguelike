@@ -1,0 +1,9 @@
+bin/*
+obj/*
+.vs/*
+
+Altseed.dll
+Altseed_core.dll
+Altseed.xml
+
+
