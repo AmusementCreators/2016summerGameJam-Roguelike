@@ -13,15 +13,15 @@ using System.Threading.Tasks;
 
 namespace _2WeeksGameJam_Roguelike.Scene
 {
-    class Title : asd.Scene
+    class Game : asd.Scene
     {
-        public Title()
+        public Game()
         {
             var layer = new asd.Layer2D();
 
             var label = new asd.TextObject2D();
             label.Font = Resource.Font;
-            label.Text = "Push Z Key To Start Game";
+            label.Text = "Game Scene";
             label.Position = asd.Engine.WindowSize.To2DF() / 2;
             label.CenterPosition = Resource.Font.CalcTextureSize(label.Text, asd.WritingDirection.Horizontal).To2DF() / 2;
 
@@ -31,8 +31,7 @@ namespace _2WeeksGameJam_Roguelike.Scene
 
         protected override void OnUpdated()
         {
-            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Z) == asd.KeyState.Push)
-                asd.Engine.ChangeScene(new Scene.Game());
+            ;
         }
     }
 }
