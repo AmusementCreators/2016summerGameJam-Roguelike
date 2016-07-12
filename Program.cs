@@ -19,7 +19,9 @@ namespace _2WeeksGameJam_Roguelike
         static void Main(string[] args)
         {
             asd.Engine.Initialize("Roguqlike", 640, 480, new asd.EngineOption());
+            Resource.Init();
 
+            asd.Engine.ChangeScene(new Scene.Title());
             while (asd.Engine.DoEvents())
             {
                 asd.Engine.Update();
