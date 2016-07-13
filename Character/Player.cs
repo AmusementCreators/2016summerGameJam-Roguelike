@@ -17,6 +17,7 @@ namespace _2WeeksGameJam_Roguelike.Character
     {
         public Player()
         {
+            this.Position = new asd.Vector2DF(320, 320);
             this.Texture = Resource.Image;
             this.Src = new asd.RectF(0, Consts.Chip.Height, Consts.Chip.Width, Consts.Chip.Height);
         }
