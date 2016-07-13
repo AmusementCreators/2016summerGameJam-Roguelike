@@ -19,13 +19,7 @@ namespace _2WeeksGameJam_Roguelike.Scene
         {
             var layer = new asd.Layer2D();
 
-            var label = new asd.TextObject2D();
-            label.Font = Resource.Font;
-            label.Text = "Game Scene";
-            label.Position = asd.Engine.WindowSize.To2DF() / 2;
-            label.CenterPosition = Resource.Font.CalcTextureSize(label.Text, asd.WritingDirection.Horizontal).To2DF() / 2;
-
-            layer.AddObject(label);
+            layer.AddObject(field);
             AddLayer(layer);
         }
 
@@ -33,5 +27,6 @@ namespace _2WeeksGameJam_Roguelike.Scene
         {
             ;
         }
+        private Character.Field field = new Character.Field("Resource/Maps/field1");
     }
 }
