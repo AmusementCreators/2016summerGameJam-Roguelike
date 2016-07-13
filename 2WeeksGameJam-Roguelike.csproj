@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Character\Field.cs" />
     <Compile Include="Character\MapChip.cs" />
+    <Compile Include="Character\Player.cs" />
     <Compile Include="Consts.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

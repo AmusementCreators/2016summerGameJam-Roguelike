@@ -19,6 +19,8 @@ namespace _2WeeksGameJam_Roguelike.Scene
         {
             var layer = new asd.Layer2D();
 
+            layer.AddObject(new Character.Player());
+
             layer.AddObject(field);
             AddLayer(layer);
         }
