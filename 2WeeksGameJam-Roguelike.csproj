@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Character\Enemy\Slime.cs" />
     <Compile Include="Character\Field.cs" />
     <Compile Include="Character\MapChip.cs" />
     <Compile Include="Character\Player.cs" />
