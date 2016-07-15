@@ -58,6 +58,10 @@
     <Compile Include="Resource.cs" />
     <Compile Include="Scene\Game.cs" />
     <Compile Include="Scene\Title.cs" />
+    <Compile Include="Turn\Enemy.cs" />
+    <Compile Include="Turn\Player.cs" />
+    <Compile Include="Turn\Start.cs" />
+    <Compile Include="Turn\Turn.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

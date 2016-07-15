@@ -25,15 +25,28 @@ namespace _2WeeksGameJam_Roguelike.Scene
 
             layer.AddObject(field);
             AddLayer(layer);
+
+            this.turn = new Turn.Start();
+            AddLayer(this.turn);
         }
 
         protected override void OnUpdated()
         {
             camera.Src = new asd.RectI(player.Position.To2DI() - asd.Engine.WindowSize/2, asd.Engine.WindowSize);
             camera.Dst = new asd.RectI(0, 0, 640, 480);
+
+            var next = turn.Next();
+            if (next != turn)
+            {
+                turn.Dispose();
+                turn = next;
+                AddLayer(turn);
+            }
         }
         private Character.Field field = new Character.Field("Resource/Maps/field1");
         private Character.Player player = new Character.Player();
         private asd.CameraObject2D camera = new asd.CameraObject2D();
+
+        private Turn.Turn turn;
     }
 }
