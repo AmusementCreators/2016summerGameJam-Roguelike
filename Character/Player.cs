@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace _2WeeksGameJam_Roguelike.Character
 {
-    class Player : asd.TextureObject2D
+    class Player : Charactor
     {
         public Player()
         {

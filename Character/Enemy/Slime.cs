@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _2WeeksGameJam_Roguelike.Character.Enemy
 {
-    class Slime : asd.TextureObject2D
+    class Slime : Enemy
     {
         public Slime()
         {
