@@ -31,6 +31,8 @@ namespace _2WeeksGameJam_Roguelike.Scene
 
             this.turn = new Turn.Start();
             AddLayer(this.turn);
+
+            AddLayer(message_layer);
         }
 
         protected override void OnUpdated()
@@ -50,5 +52,7 @@ namespace _2WeeksGameJam_Roguelike.Scene
         private asd.CameraObject2D camera = new asd.CameraObject2D();
         private List<Character.Charactor> charactors = new List<Character.Charactor>();
         private Turn.Turn turn;
+
+        private Layer.Message message_layer = new Layer.Message();
     }
 }
