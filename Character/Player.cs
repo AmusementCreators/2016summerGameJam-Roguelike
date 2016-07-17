@@ -15,11 +15,13 @@ namespace _2WeeksGameJam_Roguelike.Character
 {
     class Player : Charactor
     {
-        public Player()
+        public Player(Field field)
         {
             this.Position = new asd.Vector2DF(Consts.Chip.Width*30, Consts.Chip.Height*30);
             this.Texture = Resource.Image;
             this.Src = new asd.RectF(0, Consts.Chip.Height, Consts.Chip.Width, Consts.Chip.Height);
+
+            this.field = field;
         }
 
         protected override void OnUpdate()
@@ -33,17 +35,18 @@ namespace _2WeeksGameJam_Roguelike.Character
 
             var diff = new asd.Vector2DF();
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Left) == asd.KeyState.Hold)
-                diff.X -= Consts.Chip.Width / MaxStep;
+                diff.X -= Consts.Chip.Width;
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Right) == asd.KeyState.Hold)
-                diff.X += Consts.Chip.Width / MaxStep;
+                diff.X += Consts.Chip.Width;
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Up) == asd.KeyState.Hold)
-                diff.Y -= Consts.Chip.Height / MaxStep;
+                diff.Y -= Consts.Chip.Height;
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Down) == asd.KeyState.Hold)
-                diff.Y += Consts.Chip.Height / MaxStep;
+                diff.Y += Consts.Chip.Height;
 
-            if (diff != new asd.Vector2DF())
+            bool is_wall = this.field.At(this.Position + diff).type == MapChip.Type.Wall;
+            if (diff != new asd.Vector2DF() && !is_wall)
             {
-                this.speed = diff;
+                this.speed = diff / MaxStep;
                 step = MaxStep;
             }
         }
@@ -51,5 +54,6 @@ namespace _2WeeksGameJam_Roguelike.Character
         private const int MaxStep = 8;
         private int step = 0;
         private asd.Vector2DF speed = new asd.Vector2DF();
+        private Field field;
     }
 }

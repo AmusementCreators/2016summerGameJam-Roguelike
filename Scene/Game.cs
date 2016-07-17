@@ -20,13 +20,13 @@ namespace _2WeeksGameJam_Roguelike.Scene
             var layer = new asd.Layer2D();
 
             layer.AddObject(camera);
+            layer.AddObject(field);
 
-            charactors.Add(new Character.Player());
+            charactors.Add(new Character.Player(field));
 
             foreach (var chara in charactors)
                 layer.AddObject(chara);
 
-            layer.AddObject(field);
             AddLayer(layer);
 
             this.turn = new Turn.Start();

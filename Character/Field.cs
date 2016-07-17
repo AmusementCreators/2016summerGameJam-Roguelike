@@ -43,6 +43,13 @@ namespace _2WeeksGameJam_Roguelike.Character
             }
         }
 
+        public MapChip At(asd.Vector2DF pos)
+        {
+            int x = (int)pos.X / Consts.Chip.Width;
+            int y = (int)pos.Y / Consts.Chip.Height;
+            return this.chips[x, y];
+        }
+
         private MapChip[,] chips;
     }
 

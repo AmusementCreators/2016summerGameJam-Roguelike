@@ -37,6 +37,7 @@ namespace _2WeeksGameJam_Roguelike.Character
             }
         }
 
-        private Type type;
+
+        public Type type;
     }
 }
