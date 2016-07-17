@@ -17,7 +17,7 @@ namespace _2WeeksGameJam_Roguelike.Character
 {
     class Field : asd.MapObject2D
     {
-        public Field(string filepath)
+        public Field(string filepath, List<Enemy.Enemy> enemies)
         {
             using (var img = new Bitmap(Image.FromFile(filepath)))
             {
@@ -26,18 +26,22 @@ namespace _2WeeksGameJam_Roguelike.Character
                 {
                     for (int x=0; x<img.Width; x++)
                     {
-                        this.chips[x, y] = new Func<Color, MapChip>(color =>
+                        var color = img.GetPixel(x, y);
+                        var position = new asd.Vector2DF(x * Consts.Chip.Width, y * Consts.Chip.Height);
+                        if (color.G == 255)
                         {
-                            var position = new asd.Vector2DF(x * Consts.Chip.Width, y * Consts.Chip.Height);
-                            if (color.R == 255)
-                                return new MapChip(MapChip.Type.Wall, position);
-                            else if (color.R == 0)
-                                return new MapChip(MapChip.Type.Ground, position);
-                            else
-                                return null;
-                        })(img.GetPixel(x, y));
-
-                        AddChip(this.chips[x, y]);
+                            this.chips[x, y] = new MapChip(MapChip.Type.Wall, position);
+                            AddChip(this.chips[x, y]);
+                        } else if (color.R == 255)
+                        {
+                            this.chips[x, y] = new MapChip(MapChip.Type.Ground, position);
+                            AddChip(this.chips[x, y]);
+                            enemies.Add(new Character.Enemy.Slime(position));
+                        } else
+                        {
+                            this.chips[x, y] = new MapChip(MapChip.Type.Ground, position);
+                            AddChip(this.chips[x, y]);
+                        }
                     }
                 }
             }
