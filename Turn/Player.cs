@@ -11,6 +11,7 @@ namespace _2WeeksGameJam_Roguelike.Turn
         public Player(Character.CharactorSet set) :
             base(set)
         {
+            set.messageLayer.Add("プレイヤーのターンです");
         }
 
         public override Turn update()

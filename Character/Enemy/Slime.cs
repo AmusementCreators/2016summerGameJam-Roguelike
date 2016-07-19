@@ -18,5 +18,15 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
         protected override void OnUpdate()
         {
         }
+
+        public override bool isTurnEnd()
+        {
+            return asd.Engine.Keyboard.GetKeyState(asd.Keys.E) == asd.KeyState.Push;
+        }
+
+        public override string Name()
+        {
+            return "スライム";
+        }
     }
 }

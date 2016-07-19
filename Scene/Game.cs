@@ -20,11 +20,7 @@ namespace _2WeeksGameJam_Roguelike.Scene
             var layer = new asd.Layer2D();
 
             layer.AddObject(charactorSet.camera);
-
-            charactorSet.field = new Character.Field("Resource/Maps/field1", charactorSet.enemies);
             layer.AddObject(charactorSet.field);
-
-            charactorSet.player = new Character.Player(charactorSet.field);
             layer.AddObject(charactorSet.player);
 
             foreach (var chara in charactorSet.enemies)
@@ -34,7 +30,7 @@ namespace _2WeeksGameJam_Roguelike.Scene
 
             this.turn = new Turn.Start(this.charactorSet);
 
-            AddLayer(message_layer);
+            AddLayer(charactorSet.messageLayer);
         }
 
         protected override void OnUpdated()
@@ -43,7 +39,5 @@ namespace _2WeeksGameJam_Roguelike.Scene
         }
         private Character.CharactorSet charactorSet = new Character.CharactorSet();
         private Turn.Turn turn;
-
-        private Layer.Message message_layer = new Layer.Message();
     }
 }
