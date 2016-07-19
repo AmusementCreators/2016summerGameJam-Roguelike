@@ -19,41 +19,29 @@ namespace _2WeeksGameJam_Roguelike.Scene
         {
             var layer = new asd.Layer2D();
 
-            layer.AddObject(camera);
+            layer.AddObject(charactorSet.camera);
 
-            field = new Character.Field("Resource/Maps/field1", enemies);
-            layer.AddObject(field);
+            charactorSet.field = new Character.Field("Resource/Maps/field1", charactorSet.enemies);
+            layer.AddObject(charactorSet.field);
 
-            this.player = new Character.Player(field);
-            layer.AddObject(player);
+            charactorSet.player = new Character.Player(charactorSet.field);
+            layer.AddObject(charactorSet.player);
 
-            foreach (var chara in enemies)
+            foreach (var chara in charactorSet.enemies)
                 layer.AddObject(chara);
 
             AddLayer(layer);
 
-            this.turn = new Turn.Start();
-            AddLayer(this.turn);
+            this.turn = new Turn.Start(this.charactorSet);
 
             AddLayer(message_layer);
         }
 
         protected override void OnUpdated()
         {
-            camera.Src = new asd.RectI(player.Position.To2DI() - asd.Engine.WindowSize/2, asd.Engine.WindowSize);
-            camera.Dst = new asd.RectI(0, 0, 640, 480);
-            var next = turn.Next();
-            if (next != turn)
-            {
-                turn.Dispose();
-                turn = next;
-                AddLayer(turn);
-            }
+            turn = turn.update();
         }
-        private Character.Field field;
-        private asd.CameraObject2D camera = new asd.CameraObject2D();
-        private List<Character.Enemy.Enemy> enemies = new List<Character.Enemy.Enemy>();
-        private Character.Player player;
+        private Character.CharactorSet charactorSet = new Character.CharactorSet();
         private Turn.Turn turn;
 
         private Layer.Message message_layer = new Layer.Message();

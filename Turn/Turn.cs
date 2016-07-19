@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace _2WeeksGameJam_Roguelike.Turn
 {
-    abstract class Turn : asd.Layer2D
+    abstract class Turn
     {
-        public abstract Turn Next();
+        public Turn(Character.CharactorSet set)
+        {
+            charactorSet = set;
+        }
+        abstract public Turn update();
+
+        protected Character.CharactorSet charactorSet;
+
     }
 }

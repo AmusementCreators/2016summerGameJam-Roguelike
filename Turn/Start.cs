@@ -8,20 +8,14 @@ namespace _2WeeksGameJam_Roguelike.Turn
 {
     class Start : Turn
     {
-        public Start()
+        public Start(Character.CharactorSet set) :
+            base(set)
         {
-            var label = new asd.TextObject2D();
-            label.Font = Resource.Font;
-            label.Text = "はじめのターンです\nZキーで主人公のターンになります";
-            label.Position = asd.Engine.WindowSize.To2DF() / 2;
-            label.CenterPosition = Resource.Font.CalcTextureSize(label.Text, asd.WritingDirection.Horizontal).To2DF() / 2;
-
-            AddObject(label);
         }
-        public override Turn Next()
+        public override Turn update()
         {
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Z) == asd.KeyState.Push)
-                return new Player();
+                return new Player(this.charactorSet);
             else
                 return this;
         }

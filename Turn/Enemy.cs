@@ -8,22 +8,25 @@ namespace _2WeeksGameJam_Roguelike.Turn
 {
     class Enemy : Turn
     {
-        public Enemy()
+        public Enemy(Character.CharactorSet set) :
+            base(set)
         {
-            var label = new asd.TextObject2D();
-            label.Font = Resource.Font;
-            label.Text = "Enemy Turn\nZキーを押すと主人公のターン";
-            label.Position = asd.Engine.WindowSize.To2DF() / 2;
-            label.CenterPosition = Resource.Font.CalcTextureSize(label.Text, asd.WritingDirection.Horizontal).To2DF() / 2;
+        }
+        public override Turn update()
+        {
+            var targetEnemy = charactorSet.enemies.ElementAt(enemyIndex);
+            this.charactorSet.camera.Src = new asd.RectI(targetEnemy.Position.To2DI() - asd.Engine.WindowSize / 2, asd.Engine.WindowSize);
+            this.charactorSet.camera.Dst = new asd.RectI(0, 0, 640, 480);
 
-            AddObject(label);
-        }
-        public override Turn Next()
-        {
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Z) == asd.KeyState.Push)
-                return new Player();
-            else
-                return this;
+            {
+                enemyIndex++;
+                if (enemyIndex == charactorSet.enemies.Count)
+                    return new Player(charactorSet);
+            }
+            return this;
         }
+
+        private int enemyIndex = 0;
     }
 }
