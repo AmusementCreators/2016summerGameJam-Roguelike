@@ -11,6 +11,7 @@ namespace _2WeeksGameJam_Roguelike.Turn
         public Enemy(Character.CharactorSet set) :
             base(set)
         {
+            set.enemies.ElementAt(0).ActionPoint = set.enemies.ElementAt(0).MaxActionPoint();
             set.messageLayer.Add(set.enemies.ElementAt(0).Name() + "のターンです");
         }
         public override Turn update()
@@ -19,14 +20,18 @@ namespace _2WeeksGameJam_Roguelike.Turn
             this.charactorSet.camera.Src = new asd.RectI(targetEnemy.Position.To2DI() - asd.Engine.WindowSize / 2, asd.Engine.WindowSize);
             this.charactorSet.camera.Dst = new asd.RectI(0, 0, 640, 480);
 
+            targetEnemy.Action();
+
             if (targetEnemy.isTurnEnd())
             {
                 enemyIndex++;
                 if (enemyIndex == charactorSet.enemies.Count)
                     return new Player(charactorSet);
                 else
+                {
                     charactorSet.messageLayer.Add(targetEnemy.Name() + "のターンです");
-
+                    charactorSet.enemies.ElementAt(enemyIndex).ActionPoint = charactorSet.enemies.ElementAt(enemyIndex).MaxActionPoint();
+                }
             }
             return this;
         }

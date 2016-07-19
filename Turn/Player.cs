@@ -12,6 +12,7 @@ namespace _2WeeksGameJam_Roguelike.Turn
             base(set)
         {
             set.messageLayer.Add("プレイヤーのターンです");
+            charactorSet.player.ActionPoint = charactorSet.player.MaxActionPoint();
         }
 
         public override Turn update()
@@ -19,7 +20,9 @@ namespace _2WeeksGameJam_Roguelike.Turn
             this.charactorSet.camera.Src = new asd.RectI(this.charactorSet.player.Position.To2DI() - asd.Engine.WindowSize / 2, asd.Engine.WindowSize);
             this.charactorSet.camera.Dst = new asd.RectI(0, 0, 640, 480);
 
-            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Z) == asd.KeyState.Push)
+            charactorSet.player.Action();
+
+            if (charactorSet.player.ActionPoint < 0)
                 return new Enemy(this.charactorSet);
             else
                 return this;

@@ -36,7 +36,7 @@ namespace _2WeeksGameJam_Roguelike.Character
                         {
                             this.chips[x, y] = new MapChip(MapChip.Type.Ground, position);
                             AddChip(this.chips[x, y]);
-                            enemies.Add(new Character.Enemy.Slime(position));
+                            enemies.Add(new Character.Enemy.Slime(this, position));
                         } else
                         {
                             this.chips[x, y] = new MapChip(MapChip.Type.Ground, position);

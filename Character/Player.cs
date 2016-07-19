@@ -24,7 +24,14 @@ namespace _2WeeksGameJam_Roguelike.Character
             this.field = field;
         }
 
-        protected override void OnUpdate()
+        public override int MaxActionPoint()
+        {
+            return 40;
+        }
+
+        protected override void OnUpdate() { }
+
+        public override void Action()
         {
             if (step != 0)
             {
@@ -46,6 +53,7 @@ namespace _2WeeksGameJam_Roguelike.Character
             bool is_wall = this.field.At(this.Position + diff).type == MapChip.Type.Wall;
             if (diff != new asd.Vector2DF() && !is_wall)
             {
+                ActionPoint -= 5;
                 this.speed = diff / MaxStep;
                 step = MaxStep;
             }

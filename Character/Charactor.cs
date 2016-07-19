@@ -8,6 +8,9 @@ namespace _2WeeksGameJam_Roguelike.Character
 {
     abstract class Charactor : asd.TextureObject2D
     {
+        public int ActionPoint { get; set; }
+        public abstract int MaxActionPoint();
+        public abstract void Action();
     }
 
     class CharactorSet
