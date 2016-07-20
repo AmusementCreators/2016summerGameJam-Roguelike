@@ -34,16 +34,22 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
                 return;
             }
 
-            var diff = new asd.Vector2DF();
-            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Left) == asd.KeyState.Hold)
-                diff.X -= Consts.Chip.Width;
-            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Right) == asd.KeyState.Hold)
-                diff.X += Consts.Chip.Width;
-            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Up) == asd.KeyState.Hold)
-                diff.Y -= Consts.Chip.Height;
-            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Down) == asd.KeyState.Hold)
-                diff.Y += Consts.Chip.Height;
-
+            asd.Vector2DF diff = new asd.Vector2DF();
+            switch (Resource.Rand.Next(0, 3))
+            {
+                case 0:
+                    diff = new asd.Vector2DF(-Consts.Chip.Width, 0);
+                    break;
+                case 1:
+                    diff = new asd.Vector2DF(Consts.Chip.Width, 0);
+                    break;
+                case 2:
+                    diff = new asd.Vector2DF(0, -Consts.Chip.Height);
+                    break;
+                case 3:
+                    diff = new asd.Vector2DF(0, Consts.Chip.Height);
+                    break;
+            }
             bool is_wall = this.field.At(this.Position + diff).type == MapChip.Type.Wall;
             if (diff != new asd.Vector2DF() && !is_wall)
             {
@@ -63,7 +69,7 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
             return "スライム";
         }
 
-        private const int MaxStep = 8;
+        private const int MaxStep = 16;
         private int step = 0;
         private asd.Vector2DF speed = new asd.Vector2DF();
         private Field field;

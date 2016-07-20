@@ -18,6 +18,7 @@ namespace _2WeeksGameJam_Roguelike
         static public asd.Font Font;
         static public asd.Font SmallFont;
         static public asd.Texture2D Image;
+        static public System.Random Rand = new Random();
         static public void Init()
         {
             Font = asd.Engine.Graphics.CreateDynamicFont(string.Empty, 32, new asd.Color(255, 255, 255, 255), 0, new asd.Color(255, 255, 255, 255));
