@@ -11,6 +11,8 @@ namespace _2WeeksGameJam_Roguelike.Character
         public int ActionPoint { get; set; }
         public abstract int MaxActionPoint();
         public abstract void Action();
+
+        public abstract bool isTurnEnd();
     }
 
     class CharactorSet
@@ -25,5 +27,7 @@ namespace _2WeeksGameJam_Roguelike.Character
         public Player player;
         public List<Enemy.Enemy> enemies = new List<Enemy.Enemy>();
         public Field field;
+
+        public Charactor selectedCharactor;
     }
 }

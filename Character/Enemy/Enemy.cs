@@ -8,7 +8,6 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
 {
     abstract class Enemy : Charactor
     {
-        public abstract bool isTurnEnd();
         public abstract String Name();
     }
 }

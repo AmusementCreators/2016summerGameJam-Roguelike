@@ -55,7 +55,7 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
 
         public override bool isTurnEnd()
         {
-            return ActionPoint < 0;
+            return ActionPoint <= 0;
         }
 
         public override string Name()

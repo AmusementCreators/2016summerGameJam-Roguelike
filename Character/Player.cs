@@ -29,6 +29,11 @@ namespace _2WeeksGameJam_Roguelike.Character
             return 40;
         }
 
+        public override bool isTurnEnd()
+        {
+            return ActionPoint <= 0;
+        }
+
         protected override void OnUpdate() { }
 
         public override void Action()

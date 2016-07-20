@@ -12,6 +12,7 @@ namespace _2WeeksGameJam_Roguelike.Turn
             base(set)
         {
             set.messageLayer.Add("プレイヤーのターンです");
+            charactorSet.selectedCharactor = charactorSet.player;
             charactorSet.player.ActionPoint = charactorSet.player.MaxActionPoint();
         }
 
@@ -22,7 +23,7 @@ namespace _2WeeksGameJam_Roguelike.Turn
 
             charactorSet.player.Action();
 
-            if (charactorSet.player.ActionPoint < 0)
+            if (charactorSet.player.isTurnEnd())
                 return new Enemy(this.charactorSet);
             else
                 return this;

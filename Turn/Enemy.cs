@@ -30,6 +30,7 @@ namespace _2WeeksGameJam_Roguelike.Turn
                 else
                 {
                     charactorSet.messageLayer.Add(targetEnemy.Name() + "のターンです");
+                    charactorSet.selectedCharactor = charactorSet.enemies.ElementAt(enemyIndex);
                     charactorSet.enemies.ElementAt(enemyIndex).ActionPoint = charactorSet.enemies.ElementAt(enemyIndex).MaxActionPoint();
                 }
             }
