@@ -15,13 +15,13 @@ namespace _2WeeksGameJam_Roguelike.Character
 {
     class Player : Charactor
     {
-        public Player(Field field)
+        public Player(CharactorSet set)
         {
             this.Position = new asd.Vector2DF(Consts.Chip.Width*30, Consts.Chip.Height*30);
             this.Texture = Resource.Image;
             this.Src = new asd.RectF(0, Consts.Chip.Height, Consts.Chip.Width, Consts.Chip.Height);
 
-            this.field = field;
+            this.charactorSet = set;
         }
 
         public override int MaxActionPoint()
@@ -48,26 +48,41 @@ namespace _2WeeksGameJam_Roguelike.Character
             }
 
             var diff = new asd.Vector2DF();
-            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Left) == asd.KeyState.Hold)
+            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Left) == asd.KeyState.Push)
                 diff.X -= Consts.Chip.Width;
-            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Right) == asd.KeyState.Hold)
+            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Right) == asd.KeyState.Push)
                 diff.X += Consts.Chip.Width;
-            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Up) == asd.KeyState.Hold)
+            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Up) == asd.KeyState.Push)
                 diff.Y -= Consts.Chip.Height;
-            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Down) == asd.KeyState.Hold)
+            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Down) == asd.KeyState.Push)
                 diff.Y += Consts.Chip.Height;
 
-            bool is_wall = this.field.At(this.Position + diff).type == MapChip.Type.Wall;
-            if (diff != new asd.Vector2DF() && !is_wall)
+            bool is_wall = charactorSet.field.At(this.Position + diff).type == MapChip.Type.Wall;
+            var enemy = charactorSet.enemies.Find(e =>
             {
-                this.speed = diff / MaxStep;
-                step = MaxStep;
+                return (e.Position - (this.Position + diff)).Length < 8;
+            });
+
+            if (diff != new asd.Vector2DF())
+            {
+                if (!(enemy == null))
+                {
+                    // 敵に攻撃
+                    this.ActionPoint -= 10;
+                    this.charactorSet.messageLayer.Add(enemy.Name() + "に攻撃！！");
+                    return;
+                }
+                if (!is_wall)
+                {
+                    this.speed = diff / MaxStep;
+                    step = MaxStep;
+                }
             }
         }
 
         private const int MaxStep = 8;
         private int step = 0;
         private asd.Vector2DF speed = new asd.Vector2DF();
-        private Field field;
+        private CharactorSet charactorSet;
     }
 }
