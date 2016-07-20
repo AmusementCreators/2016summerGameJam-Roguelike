@@ -42,6 +42,8 @@ namespace _2WeeksGameJam_Roguelike.Character
             {
                 this.Position += speed;
                 step--;
+                if (step == 0)
+                    ActionPoint -= 5;
                 return;
             }
 
@@ -58,7 +60,6 @@ namespace _2WeeksGameJam_Roguelike.Character
             bool is_wall = this.field.At(this.Position + diff).type == MapChip.Type.Wall;
             if (diff != new asd.Vector2DF() && !is_wall)
             {
-                ActionPoint -= 5;
                 this.speed = diff / MaxStep;
                 step = MaxStep;
             }

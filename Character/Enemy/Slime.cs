@@ -31,6 +31,8 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
             {
                 this.Position += speed;
                 step--;
+                if (step == 0)
+                    ActionPoint -= 5;
                 return;
             }
 
