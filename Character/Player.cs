@@ -28,6 +28,10 @@ namespace _2WeeksGameJam_Roguelike.Character
         {
             return 40;
         }
+        public override int MaxHitPoint()
+        {
+            return 20;
+        }
 
         public override bool isTurnEnd()
         {
@@ -70,6 +74,7 @@ namespace _2WeeksGameJam_Roguelike.Character
                     // 敵に攻撃
                     this.ActionPoint -= 10;
                     this.charactorSet.messageLayer.Add(enemy.Name() + "に攻撃！！");
+                    enemy.HitPoint -= 1;
                     return;
                 }
                 if (!is_wall)

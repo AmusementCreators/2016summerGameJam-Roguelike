@@ -30,6 +30,15 @@ namespace _2WeeksGameJam_Roguelike.Turn
 
             charactorSet.player.Action();
 
+            charactorSet.enemies.ForEach(e => {
+                if (e.HitPoint <= 0)
+                {
+                    charactorSet.messageLayer.Add(e.Name() + "は死んだ！！");
+                    e.Dispose();
+                }
+            });
+            charactorSet.enemies.RemoveAll(e => e == null);
+
             if (charactorSet.player.isTurnEnd())
                 return new Enemy(this.charactorSet);
             else

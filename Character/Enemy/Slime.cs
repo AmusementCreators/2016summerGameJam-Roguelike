@@ -28,6 +28,10 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
         {
             return 10;
         }
+        public override int MaxHitPoint()
+        {
+            return 1;
+        }
 
         protected override void OnUpdate()
         {

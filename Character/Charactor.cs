@@ -15,9 +15,17 @@ namespace _2WeeksGameJam_Roguelike.Character
 {
     abstract class Charactor : asd.TextureObject2D
     {
+        public Charactor()
+        {
+            this.HitPoint = MaxHitPoint();
+        }
         public int ActionPoint { get; set; }
+        public int HitPoint { get; set; }
+
         public abstract int MaxActionPoint();
         public abstract void Action();
+
+        public abstract int MaxHitPoint();
 
         public abstract bool isTurnEnd();
     }
