@@ -34,7 +34,7 @@ namespace _2WeeksGameJam_Roguelike.Character
     {
         public CharactorSet()
         {
-            field = new Character.Field("Resource/Maps/field1", enemies);
+            field = new Character.Field("Resource/Maps/debug", enemies);
             player = new Character.Player(this);
         }
         public Layer.Message messageLayer = new Layer.Message();

@@ -80,6 +80,9 @@
     <Content Include="Resource\image.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resource\Maps\debug">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resource\Maps\field1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

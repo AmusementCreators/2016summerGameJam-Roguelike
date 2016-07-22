@@ -51,7 +51,13 @@ namespace _2WeeksGameJam_Roguelike.Character
         {
             int x = (int)pos.X / Consts.Chip.Width;
             int y = (int)pos.Y / Consts.Chip.Height;
-            return this.chips[x, y];
+            try
+            {
+                return this.chips[x, y];
+            } catch (IndexOutOfRangeException)
+            {
+                return new MapChip(MapChip.Type.Wall, pos);
+            }
         }
 
         private MapChip[,] chips;
