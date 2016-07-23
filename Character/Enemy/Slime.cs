@@ -15,13 +15,13 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
 {
     class Slime : Enemy
     {
-        public Slime(Field field, asd.Vector2DF pos)
+        public Slime(CharactorSet set, asd.Vector2DF pos)
         {
             this.Texture = Resource.Image;
             this.Src = new asd.RectF(Consts.Chip.Width, Consts.Chip.Height, Consts.Chip.Width, Consts.Chip.Height);
             this.Position = pos;
 
-            this.field = field;
+            this.charactorSet = set;
         }
 
         public override int MaxActionPoint()
@@ -63,8 +63,15 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
                     diff = new asd.Vector2DF(0, Consts.Chip.Height);
                     break;
             }
-            bool is_wall = this.field.At(this.Position + diff).type == MapChip.Type.Wall;
-            if (diff != new asd.Vector2DF() && !is_wall)
+            if ((Position + diff - charactorSet.player.Position).Length < 8)
+            {
+                // プレイヤーに攻撃
+                this.ActionPoint -= 10;
+                this.charactorSet.messageLayer.Add("プレイヤーに攻撃！！");
+                charactorSet.player.HitPoint -= 1;
+                return;
+            }
+            if (charactorSet.field.At(Position + diff).type != MapChip.Type.Wall)
             {
                 this.speed = diff / MaxStep;
                 step = MaxStep;
@@ -84,6 +91,6 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
         private const int MaxStep = 16;
         private int step = 0;
         private asd.Vector2DF speed = new asd.Vector2DF();
-        private Field field;
+        private CharactorSet charactorSet;
     }
 }

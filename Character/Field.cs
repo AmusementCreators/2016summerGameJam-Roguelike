@@ -17,7 +17,7 @@ namespace _2WeeksGameJam_Roguelike.Character
 {
     class Field : asd.MapObject2D
     {
-        public Field(string filepath, List<Enemy.Enemy> enemies)
+        public Field(string filepath, CharactorSet set)
         {
             using (var img = new Bitmap(Image.FromFile(filepath)))
             {
@@ -36,7 +36,7 @@ namespace _2WeeksGameJam_Roguelike.Character
                         {
                             this.chips[x, y] = new MapChip(MapChip.Type.Ground, position);
                             AddChip(this.chips[x, y]);
-                            enemies.Add(new Character.Enemy.Slime(this, position));
+                            set.enemies.Add(new Character.Enemy.Slime(set, position));
                         } else
                         {
                             this.chips[x, y] = new MapChip(MapChip.Type.Ground, position);

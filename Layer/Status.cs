@@ -27,7 +27,10 @@ namespace _2WeeksGameJam_Roguelike.Layer
         {
             var target = charactorSet.selectedCharactor;
             if (target != null)
+            {
                 APLabel.Text = "ActionPoint: " + target.ActionPoint.ToString();
+                APLabel.Text += "\nHitPoint: " + target.HitPoint.ToString();
+            }
         }
         private asd.TextObject2D APLabel = new asd.TextObject2D();
         private Character.CharactorSet charactorSet;
