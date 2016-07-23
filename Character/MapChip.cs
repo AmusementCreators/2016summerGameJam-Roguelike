@@ -24,15 +24,15 @@ namespace _2WeeksGameJam_Roguelike.Character
         public MapChip(Type type, asd.Vector2DF position)
         {
             this.type = type;
-            this.Position = position;
-            this.Texture = Resource.Image;
+            Position = position;
+            Texture = Resource.Image;
             switch (type)
             {
                 case Type.Ground:
-                    this.Src = new asd.RectF(0, 0, Consts.Chip.Width, Consts.Chip.Height);
+                    Src = new asd.RectF(0, 0, Consts.Chip.Width, Consts.Chip.Height);
                     break;
                 case Type.Wall:
-                    this.Src = new asd.RectF(Consts.Chip.Width, 0, Consts.Chip.Width, Consts.Chip.Height);
+                    Src = new asd.RectF(Consts.Chip.Width, 0, Consts.Chip.Width, Consts.Chip.Height);
                     break;
             }
         }

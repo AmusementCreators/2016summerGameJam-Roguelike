@@ -22,7 +22,7 @@ namespace _2WeeksGameJam_Roguelike.Turn
         public override Turn update()
         {
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Z) == asd.KeyState.Push)
-                return new Player(this.charactorSet);
+                return new Player(charactorSet);
             else
                 return this;
         }

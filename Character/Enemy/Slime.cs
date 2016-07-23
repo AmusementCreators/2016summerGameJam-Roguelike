@@ -15,82 +15,35 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
 {
     class Slime : Enemy
     {
-        public Slime(CharactorSet set, asd.Vector2DF pos)
+        public Slime(CharactorSet set, asd.Vector2DF pos) :
+            base(set, pos)
         {
-            this.Texture = Resource.Image;
-            this.Src = new asd.RectF(Consts.Chip.Width, Consts.Chip.Height, Consts.Chip.Width, Consts.Chip.Height);
-            this.Position = pos;
-
-            this.charactorSet = set;
+            Src = new asd.RectF(Consts.Chip.Width, Consts.Chip.Height, Consts.Chip.Width, Consts.Chip.Height);
         }
 
-        public override int MaxActionPoint()
-        {
-            return 10;
-        }
-        public override int MaxHitPoint()
-        {
-            return 1;
-        }
-
-        protected override void OnUpdate()
-        {
-        }
-        public override void Action()
-        {
-            if (step != 0)
-            {
-                this.Position += speed;
-                step--;
-                if (step == 0)
-                    ActionPoint -= 5;
-                return;
-            }
-
-            asd.Vector2DF diff = new asd.Vector2DF();
-            switch (Resource.Rand.Next(0, 3))
-            {
-                case 0:
-                    diff = new asd.Vector2DF(-Consts.Chip.Width, 0);
-                    break;
-                case 1:
-                    diff = new asd.Vector2DF(Consts.Chip.Width, 0);
-                    break;
-                case 2:
-                    diff = new asd.Vector2DF(0, -Consts.Chip.Height);
-                    break;
-                case 3:
-                    diff = new asd.Vector2DF(0, Consts.Chip.Height);
-                    break;
-            }
-            if ((Position + diff - charactorSet.player.Position).Length < 8)
-            {
-                // プレイヤーに攻撃
-                this.ActionPoint -= 10;
-                this.charactorSet.messageLayer.Add("プレイヤーに攻撃！！");
-                charactorSet.player.HitPoint -= 1;
-                return;
-            }
-            if (charactorSet.field.At(Position + diff).type != MapChip.Type.Wall)
-            {
-                this.speed = diff / MaxStep;
-                step = MaxStep;
-            }
-        }
-
-        public override bool isTurnEnd()
-        {
-            return ActionPoint <= 0;
-        }
+        public override int MaxActionPoint { get { return 10; } }
+        public override int MaxHitPoint { get { return 1; } }
 
         public override string Name()
         {
             return "スライム";
         }
 
-        private const int MaxStep = 16;
-        private int step = 0;
-        private asd.Vector2DF speed = new asd.Vector2DF();
-        private CharactorSet charactorSet;
+        protected override asd.Vector2DF Move()
+        {
+            switch (Resource.Rand.Next(0, 3))
+            {
+                case 0:
+                    return new asd.Vector2DF(-Consts.Chip.Width, 0);
+                case 1:
+                    return new asd.Vector2DF(Consts.Chip.Width, 0);
+                case 2:
+                    return new asd.Vector2DF(0, -Consts.Chip.Height);
+                case 3:
+                    return new asd.Vector2DF(0, Consts.Chip.Height);
+                default:
+                    return new asd.Vector2DF();
+            }
+        }
     }
 }

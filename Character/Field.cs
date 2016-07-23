@@ -21,7 +21,7 @@ namespace _2WeeksGameJam_Roguelike.Character
         {
             using (var img = new Bitmap(Image.FromFile(filepath)))
             {
-                this.chips = new MapChip[img.Width, img.Height];
+                chips = new MapChip[img.Width, img.Height];
                 for (int y=0; y<img.Height; y++)
                 {
                     for (int x=0; x<img.Width; x++)
@@ -30,24 +30,24 @@ namespace _2WeeksGameJam_Roguelike.Character
                         var position = new asd.Vector2DF(x * Consts.Chip.Width, y * Consts.Chip.Height);
                         if (color.G == 255)
                         {
-                            this.chips[x, y] = new MapChip(MapChip.Type.Wall, position);
-                            AddChip(this.chips[x, y]);
+                            chips[x, y] = new MapChip(MapChip.Type.Wall, position);
+                            AddChip(chips[x, y]);
                         }
                         else if (color.R == 255)
                         {
-                            this.chips[x, y] = new MapChip(MapChip.Type.Ground, position);
-                            AddChip(this.chips[x, y]);
+                            chips[x, y] = new MapChip(MapChip.Type.Ground, position);
+                            AddChip(chips[x, y]);
                             set.enemies.Add(new Character.Enemy.Slime(set, position));
                         }
                         else if (color.R == 100)
                         {
-                            this.chips[x, y] = new MapChip(MapChip.Type.Ground, position);
-                            AddChip(this.chips[x, y]);
+                            chips[x, y] = new MapChip(MapChip.Type.Ground, position);
+                            AddChip(chips[x, y]);
                             set.enemies.Add(new Character.Enemy.Golem(set, position));
                         } else
                         {
-                            this.chips[x, y] = new MapChip(MapChip.Type.Ground, position);
-                            AddChip(this.chips[x, y]);
+                            chips[x, y] = new MapChip(MapChip.Type.Ground, position);
+                            AddChip(chips[x, y]);
                         }
                     }
                 }
@@ -60,7 +60,7 @@ namespace _2WeeksGameJam_Roguelike.Character
             int y = (int)pos.Y / Consts.Chip.Height;
             try
             {
-                return this.chips[x, y];
+                return chips[x, y];
             } catch (IndexOutOfRangeException)
             {
                 return new MapChip(MapChip.Type.Wall, pos);
