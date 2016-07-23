@@ -32,11 +32,18 @@ namespace _2WeeksGameJam_Roguelike.Character
                         {
                             this.chips[x, y] = new MapChip(MapChip.Type.Wall, position);
                             AddChip(this.chips[x, y]);
-                        } else if (color.R == 255)
+                        }
+                        else if (color.R == 255)
                         {
                             this.chips[x, y] = new MapChip(MapChip.Type.Ground, position);
                             AddChip(this.chips[x, y]);
                             set.enemies.Add(new Character.Enemy.Slime(set, position));
+                        }
+                        else if (color.R == 100)
+                        {
+                            this.chips[x, y] = new MapChip(MapChip.Type.Ground, position);
+                            AddChip(this.chips[x, y]);
+                            set.enemies.Add(new Character.Enemy.Golem(set, position));
                         } else
                         {
                             this.chips[x, y] = new MapChip(MapChip.Type.Ground, position);
