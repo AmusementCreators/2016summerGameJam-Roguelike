@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _2WeeksGameJam_Roguelike.Character.Item;
 using asd;
 
 namespace _2WeeksGameJam_Roguelike.Character
@@ -24,6 +25,7 @@ namespace _2WeeksGameJam_Roguelike.Character
 
         public override int MaxActionPoint {  get { return 40; } }
         public override int MaxHitPoint { get { return 20; } }
+        public override int Power { get { return power; } }
 
         public override string Name()
         {
@@ -36,6 +38,15 @@ namespace _2WeeksGameJam_Roguelike.Character
             foreach (var e in charactorSet.enemies)
                 result.Add(e);
             return result;
+        }
+
+        protected override void OnGetItem(Item.Item item)
+        {
+            if (item is Item.Life)
+                HitPoint += 5;
+            if (item is Item.Power)
+                power += 1;
+            item.Dispose();
         }
 
         protected override Vector2DF Move()
@@ -51,5 +62,7 @@ namespace _2WeeksGameJam_Roguelike.Character
                 diff.Y += Consts.Chip.Height;
             return diff;
         }
+
+        private int power = 1;
     }
 }

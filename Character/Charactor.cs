@@ -22,16 +22,37 @@ namespace _2WeeksGameJam_Roguelike.Character
             Position = pos;
             HitPoint = MaxHitPoint;
         }
+
+        public enum ActionType
+        {
+            Move,
+            Attack
+        }
+        static public int ActionCost(ActionType type)
+        {
+            switch (type)
+            {
+                case ActionType.Attack:
+                    return 10;
+                case ActionType.Move:
+                    return 5;
+                default:
+                    return 0;
+            }
+        }
+
         public int ActionPoint { get; set; }
         public int HitPoint { get; set; }
 
         public abstract int MaxActionPoint { get; }
         public abstract int MaxHitPoint { get; }
+        public abstract int Power { get; }
 
         public abstract String Name();
         abstract protected List<Character.Charactor> AgainstCharactors();
 
         abstract protected asd.Vector2DF Move();
+        abstract protected void OnGetItem(Item.Item item);
 
         public virtual bool IsTurnEnd()
         {
@@ -45,7 +66,7 @@ namespace _2WeeksGameJam_Roguelike.Character
                 Position += speed;
                 step--;
                 if (step == 0)
-                    ActionPoint -= 5;
+                    ActionPoint -= ActionCost(ActionType.Move);
                 return;
             }
 
@@ -58,13 +79,17 @@ namespace _2WeeksGameJam_Roguelike.Character
                 return (c.Position - (Position + diff)).Length < 8;
             });
 
-            if (collideCharactor != null && (Position + diff - collideCharactor.Position).Length < 8)
+            if (collideCharactor != null)
             {
-                ActionPoint -= 10;
+                ActionPoint -= ActionCost(ActionType.Attack);
                 charactorSet.messageLayer.Add(collideCharactor.Name() + "に攻撃！！");
-                collideCharactor.HitPoint -= 1;
+                collideCharactor.HitPoint -= Power;
                 return;
             }
+            var collideItem = charactorSet.items.Find(item => (item.Position - (Position + diff)).Length < 8);
+            if (collideItem != null)
+                OnGetItem(collideItem);
+
             if (charactorSet.field.At(Position + diff).type != MapChip.Type.Wall)
             {
                 speed = diff / MaxStep;
@@ -89,6 +114,7 @@ namespace _2WeeksGameJam_Roguelike.Character
         public asd.CameraObject2D camera = new asd.CameraObject2D();
         public Player player;
         public List<Enemy.Enemy> enemies = new List<Enemy.Enemy>();
+        public List<Item.Item> items = new List<Item.Item>();
         public Field field;
 
         public Charactor selectedCharactor;

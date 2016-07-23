@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _2WeeksGameJam_Roguelike.Character.Item;
 
 namespace _2WeeksGameJam_Roguelike.Character.Enemy
 {
@@ -20,6 +21,12 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
         {
         }
 
+        public override int Power {  get { return 1; } }
+
+        protected override void OnGetItem(Item.Item item)
+        {
+            ;
+        }
         protected override List<Charactor> AgainstCharactors()
         {
             List<Charactor> result = new List<Charactor>();

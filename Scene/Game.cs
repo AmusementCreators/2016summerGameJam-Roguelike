@@ -25,6 +25,8 @@ namespace _2WeeksGameJam_Roguelike.Scene
 
             foreach (var chara in charactorSet.enemies)
                 layer.AddObject(chara);
+            foreach (var item in charactorSet.items)
+                layer.AddObject(item);
 
             AddLayer(layer);
 

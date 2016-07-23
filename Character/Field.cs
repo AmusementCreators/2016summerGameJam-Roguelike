@@ -28,7 +28,7 @@ namespace _2WeeksGameJam_Roguelike.Character
                     {
                         var color = img.GetPixel(x, y);
                         var position = new asd.Vector2DF(x * Consts.Chip.Width, y * Consts.Chip.Height);
-                        if (color.G == 255)
+                        if (color.R == 255 && color.G == 255 && color.B == 255)
                         {
                             chips[x, y] = new MapChip(MapChip.Type.Wall, position);
                             AddChip(chips[x, y]);
@@ -44,7 +44,20 @@ namespace _2WeeksGameJam_Roguelike.Character
                             chips[x, y] = new MapChip(MapChip.Type.Ground, position);
                             AddChip(chips[x, y]);
                             set.enemies.Add(new Character.Enemy.Golem(set, position));
-                        } else
+                        }
+                        else if (color.G == 255)
+                        {
+                            chips[x, y] = new MapChip(MapChip.Type.Ground, position);
+                            AddChip(chips[x, y]);
+                            set.items.Add(new Item.Life(position));
+                        }
+                        else if (color.G == 100)
+                        {
+                            chips[x, y] = new MapChip(MapChip.Type.Ground, position);
+                            AddChip(chips[x, y]);
+                            set.items.Add(new Item.Power(position));
+                        }
+                        else
                         {
                             chips[x, y] = new MapChip(MapChip.Type.Ground, position);
                             AddChip(chips[x, y]);

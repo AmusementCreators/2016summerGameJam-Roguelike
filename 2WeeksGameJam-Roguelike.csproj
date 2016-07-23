@@ -53,6 +53,9 @@
     <Compile Include="Character\Enemy\Golem.cs" />
     <Compile Include="Character\Enemy\Slime.cs" />
     <Compile Include="Character\Field.cs" />
+    <Compile Include="Character\Item\Item.cs" />
+    <Compile Include="Character\Item\Life.cs" />
+    <Compile Include="Character\Item\Power.cs" />
     <Compile Include="Character\MapChip.cs" />
     <Compile Include="Character\Player.cs" />
     <Compile Include="Consts.cs" />
