@@ -37,6 +37,10 @@ namespace _2WeeksGameJam_Roguelike.Scene
         protected override void OnUpdated()
         {
             turn = turn.update();
+            if (charactorSet.enemies.Count(e => e.IsAlive) == 0)
+                asd.Engine.ChangeScene(new Scene.Clear());
+            if (charactorSet.player.HitPoint <= 0)
+                asd.Engine.ChangeScene(new Scene.GameOver());
         }
         private Character.CharactorSet charactorSet = new Character.CharactorSet();
         private Turn.Turn turn;

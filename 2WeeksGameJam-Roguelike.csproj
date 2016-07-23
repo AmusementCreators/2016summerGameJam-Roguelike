@@ -60,7 +60,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.cs" />
+    <Compile Include="Scene\Clear.cs" />
     <Compile Include="Scene\Game.cs" />
+    <Compile Include="Scene\GameOver.cs" />
     <Compile Include="Scene\Title.cs" />
     <Compile Include="Turn\Enemy.cs" />
     <Compile Include="Turn\Player.cs" />
