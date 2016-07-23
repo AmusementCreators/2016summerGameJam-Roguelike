@@ -15,6 +15,16 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
 {
     abstract class Enemy : Charactor
     {
-        public abstract String Name();
+        public Enemy(CharactorSet set, asd.Vector2DF pos) :
+            base(set, pos)
+        {
+        }
+
+        protected override List<Charactor> AgainstCharactors()
+        {
+            List<Charactor> result = new List<Charactor>();
+            result.Add(charactorSet.player);
+            return result;
+        }
     }
 }

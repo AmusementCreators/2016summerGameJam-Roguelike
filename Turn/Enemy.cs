@@ -24,12 +24,12 @@ namespace _2WeeksGameJam_Roguelike.Turn
         public override Turn update()
         {
             var targetEnemy = charactorSet.enemies.ElementAt(enemyIndex);
-            this.charactorSet.camera.Src = new asd.RectI(targetEnemy.Position.To2DI() - asd.Engine.WindowSize / 2, asd.Engine.WindowSize);
-            this.charactorSet.camera.Dst = new asd.RectI(0, 0, 640, 480);
+            charactorSet.camera.Src = new asd.RectI(targetEnemy.Position.To2DI() - asd.Engine.WindowSize / 2, asd.Engine.WindowSize);
+            charactorSet.camera.Dst = new asd.RectI(0, 0, 640, 480);
 
             targetEnemy.Action();
 
-            if (targetEnemy.isTurnEnd())
+            if (targetEnemy.IsTurnEnd())
             {
                 enemyIndex++;
                 if (enemyIndex == charactorSet.enemies.Count)

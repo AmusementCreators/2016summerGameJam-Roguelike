@@ -28,7 +28,7 @@ namespace _2WeeksGameJam_Roguelike.Scene
 
             AddLayer(layer);
 
-            this.turn = new Turn.Start(this.charactorSet);
+            turn = new Turn.Start(charactorSet);
 
             AddLayer(new Layer.Status(charactorSet));
             AddLayer(charactorSet.messageLayer);

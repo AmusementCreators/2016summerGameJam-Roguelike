@@ -10,18 +10,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using asd;
 
 namespace _2WeeksGameJam_Roguelike.Character
 {
     class Player : Charactor
     {
-        public Player(CharactorSet set)
+        public Player(CharactorSet set) :
+            base(set, new asd.Vector2DF(Consts.Chip.Width * 30, Consts.Chip.Height * 30))
         {
-            this.Position = new asd.Vector2DF(Consts.Chip.Width*30, Consts.Chip.Height*30);
-            this.Texture = Resource.Image;
-            this.Src = new asd.RectF(0, Consts.Chip.Height, Consts.Chip.Width, Consts.Chip.Height);
-
-            this.charactorSet = set;
+            Src = new asd.RectF(0, Consts.Chip.Height, Consts.Chip.Width, Consts.Chip.Height);
         }
 
         public override int MaxActionPoint()
@@ -32,25 +30,21 @@ namespace _2WeeksGameJam_Roguelike.Character
         {
             return 20;
         }
-
-        public override bool isTurnEnd()
+        public override string Name()
         {
-            return ActionPoint <= 0;
+            return "プレイヤー";
         }
 
-        protected override void OnUpdate() { }
-
-        public override void Action()
+        protected override List<Charactor> AgainstCharactors()
         {
-            if (step != 0)
-            {
-                this.Position += speed;
-                step--;
-                if (step == 0)
-                    ActionPoint -= 5;
-                return;
-            }
+            List<Charactor> result = new List<Charactor>();
+            foreach (var e in charactorSet.enemies)
+                result.Add(e);
+            return result;
+        }
 
+        protected override Vector2DF Move()
+        {
             var diff = new asd.Vector2DF();
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Left) == asd.KeyState.Push)
                 diff.X -= Consts.Chip.Width;
@@ -60,34 +54,7 @@ namespace _2WeeksGameJam_Roguelike.Character
                 diff.Y -= Consts.Chip.Height;
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Down) == asd.KeyState.Push)
                 diff.Y += Consts.Chip.Height;
-
-            bool is_wall = charactorSet.field.At(this.Position + diff).type == MapChip.Type.Wall;
-            var enemy = charactorSet.enemies.Find(e =>
-            {
-                return (e.Position - (this.Position + diff)).Length < 8;
-            });
-
-            if (diff != new asd.Vector2DF())
-            {
-                if (!(enemy == null))
-                {
-                    // 敵に攻撃
-                    this.ActionPoint -= 10;
-                    this.charactorSet.messageLayer.Add(enemy.Name() + "に攻撃！！");
-                    enemy.HitPoint -= 1;
-                    return;
-                }
-                if (!is_wall)
-                {
-                    this.speed = diff / MaxStep;
-                    step = MaxStep;
-                }
-            }
+            return diff;
         }
-
-        private const int MaxStep = 8;
-        private int step = 0;
-        private asd.Vector2DF speed = new asd.Vector2DF();
-        private CharactorSet charactorSet;
     }
 }
