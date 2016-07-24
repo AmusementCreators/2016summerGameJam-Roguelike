@@ -25,7 +25,9 @@ namespace _2WeeksGameJam_Roguelike.Turn
 
         public override Turn update()
         {
-            charactorSet.camera.Src = new asd.RectI(charactorSet.player.Position.To2DI() - asd.Engine.WindowSize / 2, asd.Engine.WindowSize);
+            charactorSet.camera.Src = new asd.RectI(
+                ((charactorSet.player.Position - asd.Engine.WindowSize.To2DF() / 2) * 0.1f  + charactorSet.camera.Src.Position.To2DF() * 0.9f).To2DI(),
+                asd.Engine.WindowSize);
             charactorSet.camera.Dst = new asd.RectI(0, 0, 640, 480);
 
             charactorSet.player.Action();
