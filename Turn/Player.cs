@@ -37,7 +37,6 @@ namespace _2WeeksGameJam_Roguelike.Turn
                     e.Dispose();
                 }
             });
-            charactorSet.enemies.RemoveAll(e => !e.IsAlive);
 
             if (charactorSet.player.IsTurnEnd())
                 return new Enemy(charactorSet);

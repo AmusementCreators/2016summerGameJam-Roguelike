@@ -39,6 +39,7 @@ namespace _2WeeksGameJam_Roguelike.Scene
         protected override void OnUpdated()
         {
             turn = turn.update();
+            charactorSet.enemies.RemoveAll(e => !e.IsAlive);
             if (charactorSet.enemies.Count(e => e.IsAlive) == 0)
                 asd.Engine.ChangeScene(new Scene.Clear());
             if (charactorSet.player.HitPoint <= 0)
