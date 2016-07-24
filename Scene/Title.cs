@@ -20,10 +20,10 @@ namespace _2WeeksGameJam_Roguelike.Scene
             var layer = new asd.Layer2D();
 
             var label = new asd.TextObject2D();
-            label.Font = Resource.Font;
+            label.Font = Resource.BigFont;
             label.Text = "Push Z Key To Start Game";
             label.Position = asd.Engine.WindowSize.To2DF() / 2;
-            label.CenterPosition = Resource.Font.CalcTextureSize(label.Text, asd.WritingDirection.Horizontal).To2DF() / 2;
+            label.CenterPosition = Resource.BigFont.CalcTextureSize(label.Text, asd.WritingDirection.Horizontal).To2DF() / 2;
 
             layer.AddObject(label);
             AddLayer(layer);

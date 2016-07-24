@@ -33,5 +33,13 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
             result.Add(charactorSet.player);
             return result;
         }
+
+        public class DistanceToPlayer : System.Collections.Generic.IComparer<Enemy>
+        {
+            public int Compare(Enemy e1, Enemy e2)
+            {
+                return (int)((e1.Position - e1.charactorSet.player.Position).Length - (e2.Position - e2.charactorSet.player.Position).Length);
+            }
+        }
     }
 }
