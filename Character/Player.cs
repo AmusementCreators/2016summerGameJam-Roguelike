@@ -56,7 +56,7 @@ namespace _2WeeksGameJam_Roguelike.Character
             if (item is Item.Power)
                 power += 1;
             if (item is Item.View)
-                viewPoint += 10;
+                viewPoint *= 2;
             item.Dispose();
         }
 

@@ -42,8 +42,9 @@ namespace _2WeeksGameJam_Roguelike.Layer
             playerStatusLabel.Text += String.Format("  Power       : {0}\n", player.Power);
             playerStatusLabel.Text += String.Format("  View        : {0}\n", player.ViewPoint);
             enemiesStatusLabel.Text = "近くにいる敵: \n";
+            float radius = (float)Math.Sqrt(30 * charactorSet.player.ViewPoint);
             var nearEnemies = charactorSet.enemies
-                .FindAll(enemy => (enemy.Position - player.Position).Length < player.ViewPoint);
+                .FindAll(enemy => (enemy.Position - player.Position).Length < radius);
             nearEnemies.Sort(new Character.Enemy.Enemy.DistanceToPlayer());
             foreach (var e in nearEnemies)
             {
