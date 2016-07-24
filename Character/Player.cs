@@ -27,6 +27,15 @@ namespace _2WeeksGameJam_Roguelike.Character
         public override int MaxHitPoint { get { return 20; } }
         public override int Power { get { return power; } }
 
+        private int viewPoint = 30;
+        public int ViewPoint
+        {
+            get
+            {
+                return viewPoint;
+            }
+        }
+
         public override string Name()
         {
             return "プレイヤー";
@@ -46,6 +55,8 @@ namespace _2WeeksGameJam_Roguelike.Character
                 HitPoint += 5;
             if (item is Item.Power)
                 power += 1;
+            if (item is Item.View)
+                viewPoint += 10;
             item.Dispose();
         }
 

@@ -40,9 +40,10 @@ namespace _2WeeksGameJam_Roguelike.Layer
             playerStatusLabel.Text += String.Format("  Action Point: {0} / {1}\n", player.ActionPoint, player.MaxActionPoint);
             playerStatusLabel.Text += String.Format("  Hit    Point: {0} / {1}\n", player.HitPoint, player.MaxHitPoint);
             playerStatusLabel.Text += String.Format("  Power       : {0}\n", player.Power);
+            playerStatusLabel.Text += String.Format("  View        : {0}\n", player.ViewPoint);
             enemiesStatusLabel.Text = "近くにいる敵: \n";
             var nearEnemies = charactorSet.enemies
-                .FindAll(enemy => (enemy.Position - player.Position).Length < 120);
+                .FindAll(enemy => (enemy.Position - player.Position).Length < player.ViewPoint);
             nearEnemies.Sort(new Character.Enemy.Enemy.DistanceToPlayer());
             foreach (var e in nearEnemies)
             {
@@ -55,10 +56,10 @@ namespace _2WeeksGameJam_Roguelike.Layer
             enemiesStatusLabel.Position = playerStatusLabel.GetGlobalPosition() + new asd.Vector2DF(0, playerLabelHeight);
 
 
-            var size = new asd.RectF(
-                playerStatusLabel.Position,
-                Resource.SmallFont.CalcTextureSize(enemiesStatusLabel.Text, asd.WritingDirection.Horizontal).To2DF() + new asd.Vector2DF(16, playerLabelHeight));
-            (background.Shape as asd.RectangleShape).DrawingArea = size;
+            var size = new asd.Vector2DF(
+                Resource.SmallFont.CalcTextureSize(playerStatusLabel.Text, asd.WritingDirection.Horizontal).To2DF().X + 8,
+                Resource.SmallFont.CalcTextureSize(enemiesStatusLabel.Text, asd.WritingDirection.Horizontal).To2DF().Y + playerLabelHeight + 8);
+            (background.Shape as asd.RectangleShape).DrawingArea = new asd.RectF(playerStatusLabel.Position, size);
         }
         private asd.GeometryObject2D background = new asd.GeometryObject2D();
         private asd.TextObject2D playerStatusLabel = new asd.TextObject2D();

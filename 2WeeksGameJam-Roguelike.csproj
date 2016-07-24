@@ -56,6 +56,7 @@
     <Compile Include="Character\Item\Item.cs" />
     <Compile Include="Character\Item\Life.cs" />
     <Compile Include="Character\Item\Power.cs" />
+    <Compile Include="Character\Item\View.cs" />
     <Compile Include="Character\MapChip.cs" />
     <Compile Include="Character\Player.cs" />
     <Compile Include="Consts.cs" />

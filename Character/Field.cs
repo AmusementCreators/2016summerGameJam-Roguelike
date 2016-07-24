@@ -57,6 +57,12 @@ namespace _2WeeksGameJam_Roguelike.Character
                             AddChip(chips[x, y]);
                             set.items.Add(new Item.Power(position));
                         }
+                        else if (color.G == 50)
+                        {
+                            chips[x, y] = new MapChip(MapChip.Type.Ground, position);
+                            AddChip(chips[x, y]);
+                            set.items.Add(new Item.View(position));
+                        }
                         else
                         {
                             chips[x, y] = new MapChip(MapChip.Type.Ground, position);
