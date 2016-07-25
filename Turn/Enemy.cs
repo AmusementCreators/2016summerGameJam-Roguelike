@@ -18,8 +18,11 @@ namespace _2WeeksGameJam_Roguelike.Turn
         public Enemy(Character.CharactorSet set) :
             base(set)
         {
-            set.enemies.ElementAt(0).ActionPoint = set.enemies.ElementAt(0).MaxActionPoint;
-            set.messageLayer.Add(set.enemies.ElementAt(0).Name() + "のターンです");
+            if (set.enemies.Count != 0)
+            {
+                set.enemies.ElementAt(0).ActionPoint = set.enemies.ElementAt(0).MaxActionPoint;
+                set.messageLayer.Add(set.enemies.ElementAt(0).Name() + "のターンです");
+            }
         }
         public override Turn update()
         {
