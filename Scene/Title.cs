@@ -18,6 +18,10 @@ namespace _2WeeksGameJam_Roguelike.Scene
         public Title()
         {
             var layer = new asd.Layer2D();
+            var background = new asd.TextureObject2D();
+            background.Texture = asd.Engine.Graphics.CreateTexture2D("Resource/title.png");
+            background.Scale = new asd.Vector2DF(4.0f, 4.0f);
+            layer.AddObject(background);
 
             var label = new asd.TextObject2D();
             label.Font = Resource.BigFont;
