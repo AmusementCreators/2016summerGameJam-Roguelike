@@ -18,7 +18,7 @@ namespace _2WeeksGameJam_Roguelike.Character
     class Player : Charactor
     {
         public Player(CharactorSet set) :
-            base(set, new asd.Vector2DF(Consts.Chip.Width * 30, Consts.Chip.Height * 30))
+            base(set, new asd.Vector2DF())
         {
             Src = new asd.RectF(0, Consts.Chip.Height, Consts.Chip.Width, Consts.Chip.Height);
         }

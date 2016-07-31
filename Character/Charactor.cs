@@ -107,8 +107,8 @@ namespace _2WeeksGameJam_Roguelike.Character
     {
         public CharactorSet()
         {
-            field = new Character.Field("Resource/Maps/debug", this);
             player = new Character.Player(this);
+            field = new Character.Field("Resource/Maps/debug", this);
         }
         public Layer.Message messageLayer = new Layer.Message();
         public asd.CameraObject2D camera = new asd.CameraObject2D();
