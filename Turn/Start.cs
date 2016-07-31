@@ -21,6 +21,9 @@ namespace _2WeeksGameJam_Roguelike.Turn
         }
         public override Turn update()
         {
+            charactorSet.camera.Src = charactorSet.field.Size();
+            charactorSet.camera.Dst = new asd.RectI(0, 0, 640, 480);
+
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Z) == asd.KeyState.Push)
                 return new Player(charactorSet);
             else
