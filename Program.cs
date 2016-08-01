@@ -18,7 +18,15 @@ namespace _2WeeksGameJam_Roguelike
         [STAThread]
         static void Main(string[] args)
         {
-            asd.Engine.Initialize("Roguqlike", 640, 480, new asd.EngineOption());
+            var result = System.Windows.Forms.MessageBox.Show(
+                "フルスクリーン？",
+                "冒険",
+                System.Windows.Forms.MessageBoxButtons.YesNo
+                );
+            var option = new asd.EngineOption();
+            option.IsFullScreen = result == System.Windows.Forms.DialogResult.Yes;
+
+            asd.Engine.Initialize("Roguqlike", 640, 480, option);
             Resource.Init();
 
             asd.Engine.ChangeScene(new Scene.Title());
