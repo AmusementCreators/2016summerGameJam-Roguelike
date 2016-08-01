@@ -31,8 +31,7 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
 
         protected override asd.Vector2DF Move()
         {
-            var diff = charactorSet.player.Position - Position;
-            if (diff.Length > 100) // プレイヤーから遠ければランダムウォーク
+            Func<asd.Vector2DF> random_walk = () =>
             {
                 switch (Resource.Rand.Next(0, 3))
                 {
@@ -47,6 +46,11 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
                     default:
                         return new asd.Vector2DF();
                 }
+            };
+            var diff = charactorSet.player.Position - Position;
+            if (diff.Length > 100) // プレイヤーから遠ければランダムウォーク
+            {
+                return random_walk();
             }
             else // プレイヤーと近ければ近付いてくる
             {
@@ -61,7 +65,10 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
                 else
                     result.X = Consts.Chip.Width;
 
-                return result;
+                if (charactorSet.field.At(Position + result).type != MapChip.Type.Wall)
+                    return result;
+                else
+                    return random_walk();
             }
 
         }
