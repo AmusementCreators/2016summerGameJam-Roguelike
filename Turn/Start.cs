@@ -24,15 +24,27 @@ namespace _2WeeksGameJam_Roguelike.Turn
                 i.Dispose();
             set.enemies.RemoveAll(e => !e.IsAlive);
             set.items.RemoveAll(e => !e.IsAlive);
+            set.messageLayer.Clear();
+
             set.stageNumber++;
             String map_filename = "";
             switch (set.stageNumber)
             {
                 case 1:
                     map_filename = "debug";
+                    set.messageLayer.Add("これはデバッグ用のステージです");
+                    set.messageLayer.Add("Zキーを押してステージ開始");
                     break;
                 case 2:
                     map_filename = "field1";
+                    set.messageLayer.Add("冒険を開始して早々スライムの群れに遭遇した");
+                    set.messageLayer.Add("これを切り抜けないと向こうの村にたどり着けない");
+                    set.messageLayer.Add("Zキーを押してゲーム開始");
+                    break;
+                case 3:
+                    map_filename = "field2";
+                    set.messageLayer.Add("スライムの群れを切り抜けたと思ったら今度はゴーレムだ！");
+                    set.messageLayer.Add("Zキーを押してゲーム開始");
                     break;
                 default:
                     break;

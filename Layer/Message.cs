@@ -43,6 +43,12 @@ namespace _2WeeksGameJam_Roguelike.Layer
                 label.Text += "\n" + line;
         }
 
+        public void Clear()
+        {
+            lines.Clear();
+            label.Text = "";
+        }
+
         const int Width = 400;
         const int Height = 160;
         const int MaxLines = 12;

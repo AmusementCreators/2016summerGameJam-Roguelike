@@ -46,7 +46,7 @@ namespace _2WeeksGameJam_Roguelike.Scene
 
             if (charactorSet.enemies.Count(e => e.IsAlive) == 0)
             {
-                if (charactorSet.stageNumber == 2)
+                if (charactorSet.stageNumber == 3)
                     asd.Engine.ChangeScene(new Scene.Clear());
                 else
                     turn = new Turn.Start(charactorSet);
