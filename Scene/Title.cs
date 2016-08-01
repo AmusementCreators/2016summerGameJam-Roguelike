@@ -31,6 +31,8 @@ namespace _2WeeksGameJam_Roguelike.Scene
 
             layer.AddObject(label);
             AddLayer(layer);
+
+            titleSoundId = asd.Engine.Sound.Play(Resource.TitleSong);
         }
 
         protected override void OnUpdated()
@@ -38,5 +40,12 @@ namespace _2WeeksGameJam_Roguelike.Scene
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Z) == asd.KeyState.Push)
                 asd.Engine.ChangeScene(new Scene.Game());
         }
+
+        protected override void OnDispose()
+        {
+            asd.Engine.Sound.Stop(titleSoundId);
+        }
+
+        int titleSoundId;
     }
 }

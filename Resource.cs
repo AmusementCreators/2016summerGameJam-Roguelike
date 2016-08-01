@@ -19,6 +19,8 @@ namespace _2WeeksGameJam_Roguelike
         static public asd.Font Font;
         static public asd.Font SmallFont;
         static public asd.Texture2D Image;
+        static public asd.SoundSource TitleSong;
+        static public asd.SoundSource GameSong;
         static public System.Random Rand = new Random();
         static public void Init()
         {
@@ -26,6 +28,12 @@ namespace _2WeeksGameJam_Roguelike
             Font = asd.Engine.Graphics.CreateDynamicFont(string.Empty, 16, new asd.Color(255, 255, 255, 255), 0, new asd.Color(255, 255, 255, 255));
             SmallFont = asd.Engine.Graphics.CreateDynamicFont(string.Empty, 10, new asd.Color(255, 255, 255, 255), 0, new asd.Color(255, 255, 255, 255));
             Image = asd.Engine.Graphics.CreateTexture2D("Resource/image.png");
+
+            TitleSong = asd.Engine.Sound.CreateSoundSource("Resource/title.ogg", true);
+            TitleSong.IsLoopingMode = true;
+
+            GameSong = asd.Engine.Sound.CreateSoundSource("Resource/game.ogg", true);
+            GameSong.IsLoopingMode = true;
         }
     }
 }

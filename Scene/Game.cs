@@ -32,6 +32,8 @@ namespace _2WeeksGameJam_Roguelike.Scene
 
             AddLayer(new Layer.Status(charactorSet));
             AddLayer(charactorSet.messageLayer);
+
+            gameSoundId = asd.Engine.Sound.Play(Resource.GameSong);
         }
 
         protected override void OnUpdated()
@@ -52,8 +54,14 @@ namespace _2WeeksGameJam_Roguelike.Scene
             if (charactorSet.player.HitPoint <= 0)
                 asd.Engine.ChangeScene(new Scene.GameOver());
         }
+        protected override void OnDispose()
+        {
+            asd.Engine.Sound.Stop(gameSoundId);
+        }
         private Character.CharactorSet charactorSet = new Character.CharactorSet();
         private asd.GeometryObject2D viewCircle = new asd.GeometryObject2D();
         private Turn.Turn turn;
+
+        int gameSoundId;
     }
 }

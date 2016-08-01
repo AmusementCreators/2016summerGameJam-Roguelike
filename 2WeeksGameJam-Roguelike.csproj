@@ -76,6 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Resource\title.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Altseed.dll">
@@ -90,6 +93,9 @@
     <Content Include="Resource\title.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resource\game.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resource\Maps\debug">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
