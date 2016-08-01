@@ -117,6 +117,9 @@ namespace _2WeeksGameJam_Roguelike.Character
         public List<Item.Item> items = new List<Item.Item>();
         public Field field;
 
+        public int stageNumber = 0;
+        public asd.Layer2D gameLayer = new asd.Layer2D();
+
         public Charactor selectedCharactor;
     }
 }

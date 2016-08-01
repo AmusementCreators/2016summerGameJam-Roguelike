@@ -18,6 +18,32 @@ namespace _2WeeksGameJam_Roguelike.Turn
         public Start(Character.CharactorSet set) :
             base(set)
         {
+            foreach (var e in set.enemies)
+                e.Dispose();
+            foreach (var i in set.items)
+                i.Dispose();
+            set.enemies.RemoveAll(e => !e.IsAlive);
+            set.items.RemoveAll(e => !e.IsAlive);
+            set.stageNumber++;
+            String map_filename = "";
+            switch (set.stageNumber)
+            {
+                case 1:
+                    map_filename = "debug";
+                    break;
+                case 2:
+                    map_filename = "field1";
+                    break;
+                default:
+                    break;
+            }
+            set.field?.Dispose();
+            set.field = new Character.Field(String.Format("Resource/Maps/{0}", map_filename), set);
+            charactorSet.gameLayer.AddObject(charactorSet.field);
+            foreach (var chara in charactorSet.enemies)
+                charactorSet.gameLayer.AddObject(chara);
+            foreach (var item in charactorSet.items)
+                charactorSet.gameLayer.AddObject(item);
         }
         public override Turn update()
         {

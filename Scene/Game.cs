@@ -17,24 +17,16 @@ namespace _2WeeksGameJam_Roguelike.Scene
     {
         public Game()
         {
-            var layer = new asd.Layer2D();
-
-            layer.AddObject(charactorSet.camera);
-            layer.AddObject(charactorSet.field);
-            layer.AddObject(charactorSet.player);
-
-            foreach (var chara in charactorSet.enemies)
-                layer.AddObject(chara);
-            foreach (var item in charactorSet.items)
-                layer.AddObject(item);
+            charactorSet.gameLayer.AddObject(charactorSet.camera);
+            charactorSet.gameLayer.AddObject(charactorSet.player);
 
             var circle = new asd.CircleShape();
             circle.NumberOfCorners = 32;
             viewCircle.Shape = circle;
             viewCircle.Color = new asd.Color(0, 255, 255);
-            layer.AddObject(viewCircle);
+            charactorSet.gameLayer.AddObject(viewCircle);
 
-            AddLayer(layer);
+            AddLayer(charactorSet.gameLayer);
 
             turn = new Turn.Start(charactorSet);
 
@@ -51,7 +43,12 @@ namespace _2WeeksGameJam_Roguelike.Scene
             (viewCircle.Shape as asd.CircleShape).OuterDiameter = radius * 2;
 
             if (charactorSet.enemies.Count(e => e.IsAlive) == 0)
-                asd.Engine.ChangeScene(new Scene.Clear());
+            {
+                if (charactorSet.stageNumber == 2)
+                    asd.Engine.ChangeScene(new Scene.Clear());
+                else
+                    turn = new Turn.Start(charactorSet);
+            }
             if (charactorSet.player.HitPoint <= 0)
                 asd.Engine.ChangeScene(new Scene.GameOver());
         }
