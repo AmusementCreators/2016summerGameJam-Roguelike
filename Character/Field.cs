@@ -92,9 +92,9 @@ namespace _2WeeksGameJam_Roguelike.Character
             }
         }
 
-        public asd.RectI Size()
+        public asd.Vector2DI Size()
         {
-            return new asd.RectI(0, 0, chips.GetLength(0) * Consts.Chip.Width, chips.GetLength(1) * Consts.Chip.Height);
+            return new asd.Vector2DI(chips.GetLength(0) * Consts.Chip.Width, chips.GetLength(1) * Consts.Chip.Height);
         }
 
         private MapChip[,] chips;
