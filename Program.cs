@@ -20,18 +20,20 @@ namespace _2WeeksGameJam_Roguelike
         {
             var result = System.Windows.Forms.MessageBox.Show(
                 "フルスクリーン？",
-                "冒険",
+                Resource.GameTitle,
                 System.Windows.Forms.MessageBoxButtons.YesNo
                 );
             var option = new asd.EngineOption();
             option.IsFullScreen = result == System.Windows.Forms.DialogResult.Yes;
 
-            asd.Engine.Initialize("Roguqlike", 640, 480, option);
+            asd.Engine.Initialize(Resource.GameTitle, 640, 480, option);
             Resource.Init();
 
             asd.Engine.ChangeScene(new Scene.Title());
             while (asd.Engine.DoEvents())
             {
+                if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Escape) == asd.KeyState.Push)
+                    break;
                 asd.Engine.Update();
             }
             asd.Engine.Terminate();

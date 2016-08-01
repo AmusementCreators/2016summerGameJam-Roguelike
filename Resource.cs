@@ -15,6 +15,7 @@ namespace _2WeeksGameJam_Roguelike
 {
     static class Resource
     {
+        static public String GameTitle = "冒険";
         static public asd.Font BigFont;
         static public asd.Font Font;
         static public asd.Font SmallFont;
@@ -24,9 +25,9 @@ namespace _2WeeksGameJam_Roguelike
         static public System.Random Rand = new Random();
         static public void Init()
         {
-            BigFont = asd.Engine.Graphics.CreateDynamicFont(string.Empty, 32, new asd.Color(255, 255, 255, 255), 0, new asd.Color(255, 255, 255, 255));
-            Font = asd.Engine.Graphics.CreateDynamicFont(string.Empty, 16, new asd.Color(255, 255, 255, 255), 0, new asd.Color(255, 255, 255, 255));
-            SmallFont = asd.Engine.Graphics.CreateDynamicFont(string.Empty, 10, new asd.Color(255, 255, 255, 255), 0, new asd.Color(255, 255, 255, 255));
+            BigFont = asd.Engine.Graphics.CreateDynamicFont("Resource/PixelMplus10-Regular.ttf", 32, new asd.Color(0, 0, 0, 255), 0, new asd.Color(0, 0, 0, 255));
+            Font = asd.Engine.Graphics.CreateDynamicFont("Resource/PixelMplus10-Regular.ttf", 16, new asd.Color(255, 255, 255, 255), 0, new asd.Color(255, 255, 255, 255));
+            SmallFont = asd.Engine.Graphics.CreateDynamicFont("Resource/PixelMplus10-Regular.ttf", 10, new asd.Color(255, 255, 255, 255), 0, new asd.Color(255, 255, 255, 255));
             Image = asd.Engine.Graphics.CreateTexture2D("Resource/image.png");
 
             TitleSong = asd.Engine.Sound.CreateSoundSource("Resource/title.ogg", true);

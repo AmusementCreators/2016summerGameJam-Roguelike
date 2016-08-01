@@ -12,6 +12,11 @@ namespace _2WeeksGameJam_Roguelike.Scene
         {
             var layer = new asd.Layer2D();
 
+            var background = new asd.TextureObject2D();
+            background.Texture = asd.Engine.Graphics.CreateTexture2D("Resource/title.png");
+            background.Scale = new asd.Vector2DF(4, 4);
+            layer.AddObject(background);
+
             var label = new asd.TextObject2D();
             label.Font = Resource.BigFont;
             label.Text = "Game Over...\nPush Z Key To Title Scene";

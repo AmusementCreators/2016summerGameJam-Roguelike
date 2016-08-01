@@ -39,13 +39,13 @@ namespace _2WeeksGameJam_Roguelike.Layer
             if (lines.Count() > MaxLines)
                 lines.RemoveAt(0);
             label.Text = "";
-            foreach (var line in lines)
+            foreach (var line in Enumerable.Reverse(lines))
                 label.Text += "\n" + line;
         }
 
         const int Width = 400;
         const int Height = 160;
-        const int MaxLines = 6;
+        const int MaxLines = 12;
         asd.TextObject2D label = new asd.TextObject2D();
         List<String> lines = new List<string>();
     }
