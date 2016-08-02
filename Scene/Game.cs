@@ -17,8 +17,14 @@ namespace _2WeeksGameJam_Roguelike.Scene
     {
         public Game()
         {
+            var layer = new asd.Layer2D();
+            var background = new asd.TextureObject2D();
+            background.Texture = asd.Engine.Graphics.CreateTexture2D("Resource/title.png");
+            background.Scale = new asd.Vector2DF(4, 4);
+            layer.AddObject(background);
+            AddLayer(layer);
+
             charactorSet.gameLayer.AddObject(charactorSet.camera);
-            charactorSet.gameLayer.AddObject(charactorSet.player);
 
             var circle = new asd.CircleShape();
             circle.NumberOfCorners = 32;
@@ -29,6 +35,7 @@ namespace _2WeeksGameJam_Roguelike.Scene
             AddLayer(charactorSet.gameLayer);
 
             turn = new Turn.Start(charactorSet);
+            charactorSet.gameLayer.AddObject(charactorSet.player);
 
             AddLayer(new Layer.Status(charactorSet));
             AddLayer(charactorSet.messageLayer);
