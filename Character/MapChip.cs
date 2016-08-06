@@ -26,6 +26,7 @@ namespace _2WeeksGameJam_Roguelike.Character
             this.type = type;
             Position = position;
             Texture = Resource.Image;
+            Scale = new asd.Vector2DF(2, 2);
             switch (type)
             {
                 case Type.Ground:

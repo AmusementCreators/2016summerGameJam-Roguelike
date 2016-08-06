@@ -19,6 +19,8 @@ namespace _2WeeksGameJam_Roguelike
         {
             public const int Width = 16;
             public const int Height = 16;
+            public const int ScreenWidth = 32;
+            public const int ScreenHeight = 32;
         }
     }
 }

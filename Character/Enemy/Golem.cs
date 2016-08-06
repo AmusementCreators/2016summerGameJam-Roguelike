@@ -36,19 +36,19 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
                 switch (Resource.Rand.Next(0, 3))
                 {
                     case 0:
-                        return new asd.Vector2DF(-Consts.Chip.Width, 0);
+                        return new asd.Vector2DF(-Consts.Chip.ScreenWidth, 0);
                     case 1:
-                        return new asd.Vector2DF(Consts.Chip.Width, 0);
+                        return new asd.Vector2DF(Consts.Chip.ScreenWidth, 0);
                     case 2:
-                        return new asd.Vector2DF(0, -Consts.Chip.Height);
+                        return new asd.Vector2DF(0, -Consts.Chip.ScreenHeight);
                     case 3:
-                        return new asd.Vector2DF(0, Consts.Chip.Height);
+                        return new asd.Vector2DF(0, Consts.Chip.ScreenHeight);
                     default:
                         return new asd.Vector2DF();
                 }
             };
             var diff = charactorSet.player.Position - Position;
-            if (diff.Length > 100) // プレイヤーから遠ければランダムウォーク
+            if (diff.Length > 200) // プレイヤーから遠ければランダムウォーク
             {
                 return random_walk();
             }
@@ -57,13 +57,13 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
                 var result = new asd.Vector2DF();
                 var angle = (diff.Degree + 360)%360 - 45;
                 if (angle < 90)
-                    result.Y = Consts.Chip.Height;
+                    result.Y = Consts.Chip.ScreenHeight;
                 else if (angle < 180)
-                    result.X = -Consts.Chip.Width;
+                    result.X = -Consts.Chip.ScreenWidth;
                 else if (angle < 270)
-                    result.Y = -Consts.Chip.Height;
+                    result.Y = -Consts.Chip.ScreenHeight;
                 else
-                    result.X = Consts.Chip.Width;
+                    result.X = Consts.Chip.ScreenWidth;
 
                 if (charactorSet.field.At(Position + result).type != MapChip.Type.Wall)
                     return result;

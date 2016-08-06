@@ -27,7 +27,7 @@ namespace _2WeeksGameJam_Roguelike.Character
                     for (int x=0; x<img.Width; x++)
                     {
                         var color = img.GetPixel(x, y);
-                        var position = new asd.Vector2DF(x * Consts.Chip.Width, y * Consts.Chip.Height);
+                        var position = new asd.Vector2DF(x * Consts.Chip.ScreenWidth, y * Consts.Chip.ScreenHeight);
                         if (color.R == 255 && color.G == 255 && color.B == 255)
                         {
                             chips[x, y] = new MapChip(MapChip.Type.Wall, position);
@@ -87,8 +87,8 @@ namespace _2WeeksGameJam_Roguelike.Character
 
         public MapChip At(asd.Vector2DF pos)
         {
-            int x = (int)pos.X / Consts.Chip.Width;
-            int y = (int)pos.Y / Consts.Chip.Height;
+            int x = (int)pos.X / Consts.Chip.ScreenWidth;
+            int y = (int)pos.Y / Consts.Chip.ScreenHeight;
             try
             {
                 return chips[x, y];
@@ -100,7 +100,7 @@ namespace _2WeeksGameJam_Roguelike.Character
 
         public asd.Vector2DI Size()
         {
-            return new asd.Vector2DI(chips.GetLength(0) * Consts.Chip.Width, chips.GetLength(1) * Consts.Chip.Height);
+            return new asd.Vector2DI(chips.GetLength(0) * Consts.Chip.ScreenWidth, chips.GetLength(1) * Consts.Chip.ScreenHeight);
         }
 
         private MapChip[,] chips;

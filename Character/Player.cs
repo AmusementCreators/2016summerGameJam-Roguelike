@@ -64,13 +64,13 @@ namespace _2WeeksGameJam_Roguelike.Character
         {
             var diff = new asd.Vector2DF();
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Left) == asd.KeyState.Push)
-                diff.X -= Consts.Chip.Width;
+                diff.X -= Consts.Chip.ScreenWidth;
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Right) == asd.KeyState.Push)
-                diff.X += Consts.Chip.Width;
+                diff.X += Consts.Chip.ScreenWidth;
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Up) == asd.KeyState.Push)
-                diff.Y -= Consts.Chip.Height;
+                diff.Y -= Consts.Chip.ScreenHeight;
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Down) == asd.KeyState.Push)
-                diff.Y += Consts.Chip.Height;
+                diff.Y += Consts.Chip.ScreenHeight;
             return diff;
         }
 

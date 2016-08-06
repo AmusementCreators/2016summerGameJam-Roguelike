@@ -17,13 +17,22 @@ namespace _2WeeksGameJam_Roguelike.Scene
             background.Scale = new asd.Vector2DF(4, 4);
             layer.AddObject(background);
 
-            var label = new asd.TextObject2D();
-            label.Font = Resource.BigFont;
-            label.Text = "Game Over...\nPush Z Key To Title Scene";
-            label.Position = asd.Engine.WindowSize.To2DF() / 2;
-            label.CenterPosition = Resource.BigFont.CalcTextureSize(label.Text, asd.WritingDirection.Horizontal).To2DF() / 2;
+            var gameoverLabel = new asd.TextObject2D();
+            gameoverLabel.Font = Resource.BigFont;
+            gameoverLabel.Text = "Game Over...";
+            gameoverLabel.Position = asd.Engine.WindowSize.To2DF() / 2;
+            gameoverLabel.CenterPosition = Resource.BigFont.CalcTextureSize(gameoverLabel.Text, asd.WritingDirection.Horizontal).To2DF() / 2;
+            
+            layer.AddObject(gameoverLabel);
 
-            layer.AddObject(label);
+            var returnLabel = new asd.TextObject2D();
+            returnLabel.Font = Resource.Font;
+            returnLabel.Text = "Push Z Key To Title Scene";
+            returnLabel.Position = asd.Engine.WindowSize.To2DF() / 2 + new asd.Vector2DF(0, 64);
+            returnLabel.CenterPosition = Resource.Font.CalcTextureSize(returnLabel.Text, asd.WritingDirection.Horizontal).To2DF() / 2;
+
+            layer.AddObject(returnLabel);
+
             AddLayer(layer);
         }
 

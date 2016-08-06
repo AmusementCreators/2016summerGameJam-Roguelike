@@ -34,13 +34,13 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
             switch (Resource.Rand.Next(0, 3))
             {
                 case 0:
-                    return new asd.Vector2DF(-Consts.Chip.Width, 0);
+                    return new asd.Vector2DF(-Consts.Chip.ScreenWidth, 0);
                 case 1:
-                    return new asd.Vector2DF(Consts.Chip.Width, 0);
+                    return new asd.Vector2DF(Consts.Chip.ScreenWidth, 0);
                 case 2:
-                    return new asd.Vector2DF(0, -Consts.Chip.Height);
+                    return new asd.Vector2DF(0, -Consts.Chip.ScreenHeight);
                 case 3:
-                    return new asd.Vector2DF(0, Consts.Chip.Height);
+                    return new asd.Vector2DF(0, Consts.Chip.ScreenHeight);
                 default:
                     return new asd.Vector2DF();
             }

@@ -51,7 +51,7 @@ namespace _2WeeksGameJam_Roguelike.Layer
 
         const int Width = 400;
         const int Height = 160;
-        const int MaxLines = 12;
+        const int MaxLines = 8;
         asd.TextObject2D label = new asd.TextObject2D();
         List<String> lines = new List<string>();
     }

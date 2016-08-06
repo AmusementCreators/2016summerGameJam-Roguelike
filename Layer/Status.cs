@@ -37,29 +37,21 @@ namespace _2WeeksGameJam_Roguelike.Layer
         {
             var player = charactorSet.player;
             playerStatusLabel.Text  = "プレイヤー: \n";
-            playerStatusLabel.Text += String.Format("  Action Point: {0} / {1}\n", player.ActionPoint, player.MaxActionPoint);
-            playerStatusLabel.Text += String.Format("  Hit    Point: {0} / {1}\n", player.HitPoint, player.MaxHitPoint);
-            playerStatusLabel.Text += String.Format("  Power       : {0}\n", player.Power);
-            playerStatusLabel.Text += String.Format("  View        : {0}\n", player.ViewPoint);
-            enemiesStatusLabel.Text = "近くにいる敵: \n";
+            playerStatusLabel.Text += String.Format("  AP    : {0} / {1}\n", player.ActionPoint, player.MaxActionPoint);
+            playerStatusLabel.Text += String.Format("  HP    : {0} / {1}\n", player.HitPoint, player.MaxHitPoint);
+            playerStatusLabel.Text += String.Format("  Power : {0}\n", player.Power);
+            playerStatusLabel.Text += String.Format("  View  : {0}\n", player.ViewPoint);
+            enemiesStatusLabel.Text = "近くにいる敵: AP/HP/Power\n";
             float radius = (float)Math.Sqrt(30 * charactorSet.player.ViewPoint);
             var nearEnemies = charactorSet.enemies
                 .FindAll(enemy => (enemy.Position - player.Position).Length < radius);
             nearEnemies.Sort(new Character.Enemy.Enemy.DistanceToPlayer());
             foreach (var e in nearEnemies)
-            {
-                enemiesStatusLabel.Text += String.Format("  {0}\n", e.Name());
-                enemiesStatusLabel.Text += String.Format("    Action Point: {0}\n", e.MaxActionPoint);
-                enemiesStatusLabel.Text += String.Format("    Hit    Point: {0} / {1}\n", e.HitPoint, e.MaxHitPoint);
-                enemiesStatusLabel.Text += String.Format("    Power       : {0}\n", e.Power);
-            }
+                enemiesStatusLabel.Text += String.Format("  {0}: {1}/{2}/{3}\n", e.Name(), e.MaxActionPoint, e.HitPoint, e.Power);
             var playerLabelHeight = Resource.SmallFont.CalcTextureSize(playerStatusLabel.Text, asd.WritingDirection.Horizontal).Y;
             enemiesStatusLabel.Position = playerStatusLabel.GetGlobalPosition() + new asd.Vector2DF(0, playerLabelHeight);
 
-
-            var size = new asd.Vector2DF(
-                Resource.SmallFont.CalcTextureSize(playerStatusLabel.Text, asd.WritingDirection.Horizontal).To2DF().X + 8,
-                Resource.SmallFont.CalcTextureSize(enemiesStatusLabel.Text, asd.WritingDirection.Horizontal).To2DF().Y + playerLabelHeight + 8);
+            var size = Resource.SmallFont.CalcTextureSize(enemiesStatusLabel.Text, asd.WritingDirection.Horizontal).To2DF() + new asd.Vector2DF(8, playerLabelHeight + 8);
             (background.Shape as asd.RectangleShape).DrawingArea = new asd.RectF(playerStatusLabel.Position, size);
         }
         private asd.GeometryObject2D background = new asd.GeometryObject2D();

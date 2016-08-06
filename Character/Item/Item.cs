@@ -12,6 +12,7 @@ namespace _2WeeksGameJam_Roguelike.Character.Item
         {
             Texture = Resource.Image;
             Position = pos;
+            Scale = new asd.Vector2DF(2, 2);
         }
 
         public abstract String Name();

@@ -46,7 +46,7 @@ namespace _2WeeksGameJam_Roguelike.Scene
         protected override void OnUpdated()
         {
             turn = turn.update();
-            viewCircle.Position = charactorSet.player.Position + new asd.Vector2DF(Consts.Chip.Width, Consts.Chip.Height)/2;
+            viewCircle.Position = charactorSet.player.Position + new asd.Vector2DF(Consts.Chip.ScreenWidth, Consts.Chip.ScreenHeight)/2;
             float radius = (float)Math.Sqrt(30 * charactorSet.player.ViewPoint);
             (viewCircle.Shape as asd.CircleShape).InnerDiameter = radius * 2 - 1;
             (viewCircle.Shape as asd.CircleShape).OuterDiameter = radius * 2;

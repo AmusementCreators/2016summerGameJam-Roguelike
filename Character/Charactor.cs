@@ -21,6 +21,7 @@ namespace _2WeeksGameJam_Roguelike.Character
             Texture = Resource.Image;
             Position = pos;
             HitPoint = MaxHitPoint;
+            Scale = new asd.Vector2DF(2, 2);
         }
 
         public enum ActionType
