@@ -45,6 +45,12 @@ namespace _2WeeksGameJam_Roguelike.Character
                             AddChip(chips[x, y]);
                             set.enemies.Add(new Character.Enemy.Golem(set, position));
                         }
+                        else if (color.R == 50)
+                        {
+                            chips[x, y] = new MapChip(MapChip.Type.Ground, position);
+                            AddChip(chips[x, y]);
+                            set.enemies.Add(new Character.Enemy.Satan(set, position));
+                        }
                         else if (color.G == 255)
                         {
                             chips[x, y] = new MapChip(MapChip.Type.Ground, position);

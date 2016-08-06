@@ -46,6 +46,10 @@ namespace _2WeeksGameJam_Roguelike.Turn
                     set.messageLayer.Add("スライムの群れを切り抜けたと思ったら今度はゴーレムだ！");
                     set.messageLayer.Add("Zキーを押してゲーム開始");
                     break;
+                case 4:
+                    map_filename = "field3";
+                    set.messageLayer.Add("Zキーを押してゲーム開始");
+                    break;
                 default:
                     break;
             }

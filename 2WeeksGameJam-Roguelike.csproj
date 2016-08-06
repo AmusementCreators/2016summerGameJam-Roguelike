@@ -55,6 +55,7 @@
     <Compile Include="Character\Charactor.cs" />
     <Compile Include="Character\Enemy\Enemy.cs" />
     <Compile Include="Character\Enemy\Golem.cs" />
+    <Compile Include="Character\Enemy\Satan.cs" />
     <Compile Include="Character\Enemy\Slime.cs" />
     <Compile Include="Character\Field.cs" />
     <Compile Include="Character\Item\Item.cs" />
@@ -81,6 +82,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Resource\Maps\field2">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resource\Maps\field3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resource\PixelMplus10-Regular.ttf">
