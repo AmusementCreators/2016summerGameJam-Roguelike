@@ -92,6 +92,7 @@ namespace _2WeeksGameJam_Roguelike.Character
             return diff;
         }
 
+        protected override int MaxStep { get { return 16; } }
         private int power = 1;
     }
 }

@@ -41,5 +41,7 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
                 return (int)((e1.Position - e1.charactorSet.player.Position).Length - (e2.Position - e2.charactorSet.player.Position).Length);
             }
         }
+
+        protected override int MaxStep { get { return 4; } }
     }
 }

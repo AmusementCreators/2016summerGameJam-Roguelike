@@ -98,7 +98,7 @@ namespace _2WeeksGameJam_Roguelike.Character
             }
         }
 
-        private const int MaxStep = 16;
+        protected abstract int MaxStep { get; }
         private int step = 0;
         private asd.Vector2DF speed = new asd.Vector2DF();
         protected CharactorSet charactorSet;
