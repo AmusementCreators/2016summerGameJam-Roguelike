@@ -23,6 +23,24 @@ namespace _2WeeksGameJam_Roguelike.Character
             Src = new asd.RectF(0, Consts.Chip.Height, Consts.Chip.Width, Consts.Chip.Height);
         }
 
+        public override int ActionPoint
+        {
+            set
+            {
+                base.ActionPoint = value;
+                if (base.ActionPoint > MaxActionPoint)
+                    base.ActionPoint = MaxActionPoint;
+            }
+        }
+        public override int HitPoint
+        {
+            set
+            {
+                base.HitPoint = value;
+                if (base.HitPoint > MaxHitPoint)
+                    base.HitPoint = MaxHitPoint;
+            }
+        }
         public override int MaxActionPoint {  get { return 40; } }
         public override int MaxHitPoint { get { return 20; } }
         public override int Power { get { return power; } }

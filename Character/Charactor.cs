@@ -42,8 +42,8 @@ namespace _2WeeksGameJam_Roguelike.Character
             }
         }
 
-        public int ActionPoint { get; set; }
-        public int HitPoint { get; set; }
+        public virtual int ActionPoint { get; set; }
+        public virtual int HitPoint { get; set; }
 
         public abstract int MaxActionPoint { get; }
         public abstract int MaxHitPoint { get; }
