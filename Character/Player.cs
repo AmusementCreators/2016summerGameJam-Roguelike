@@ -42,7 +42,7 @@ namespace _2WeeksGameJam_Roguelike.Character
             }
         }
         public override int MaxActionPoint {  get { return 40; } }
-        public override int MaxHitPoint { get { return 20; } }
+        public override int MaxHitPoint { get { return 10; } }
         public override int Power { get { return power; } }
 
         private int viewPoint = 30;
