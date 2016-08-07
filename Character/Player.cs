@@ -30,6 +30,8 @@ namespace _2WeeksGameJam_Roguelike.Character
                 base.ActionPoint = value;
                 if (base.ActionPoint > MaxActionPoint)
                     base.ActionPoint = MaxActionPoint;
+                if (base.ActionPoint < 0)
+                    base.ActionPoint = 0;
             }
         }
         public override int HitPoint
