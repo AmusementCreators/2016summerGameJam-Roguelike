@@ -16,7 +16,7 @@ namespace _2WeeksGameJam_Roguelike
     static class Resource
     {
         static public String GameTitle = "冒険";
-        static public int NumberOfStage = 4;
+        static public int NumberOfStage = 3;
         static public asd.Font BigFont;
         static public asd.Font Font;
         static public asd.Font SmallFont;
