@@ -42,6 +42,6 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
             }
         }
 
-        protected override int MaxStep { get { return 4; } }
+        protected override int MaxStep { get { return 8; } }
     }
 }

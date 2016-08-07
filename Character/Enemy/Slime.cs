@@ -31,7 +31,7 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
 
         protected override asd.Vector2DF Move()
         {
-            switch (Resource.Rand.Next(0, 3))
+            switch (Resource.Rand.Next(0, 4))
             {
                 case 0:
                     return new asd.Vector2DF(-Consts.Chip.ScreenWidth, 0);
