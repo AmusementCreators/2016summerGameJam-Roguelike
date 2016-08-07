@@ -51,15 +51,29 @@ namespace _2WeeksGameJam_Roguelike.Scene
             (viewCircle.Shape as asd.CircleShape).InnerDiameter = radius * 2 - 1;
             (viewCircle.Shape as asd.CircleShape).OuterDiameter = radius * 2;
 
-            if (charactorSet.enemies.Count(e => e.IsAlive) == 0)
+            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Z) == asd.KeyState.Push && turn is Turn.Wait)
             {
-                if (charactorSet.stageNumber == 4)
+                if (charactorSet.stageNumber == Resource.NumberOfStage)
                     asd.Engine.ChangeScene(new Scene.Clear());
+
+                if (charactorSet.player.HitPoint <= 0)
+                    asd.Engine.ChangeScene(new Scene.GameOver());
+            }
+            if (charactorSet.enemies.Count(e => e.IsAlive) == 0 && !(turn is Turn.Wait))
+            {
+                if (charactorSet.stageNumber == Resource.NumberOfStage)
+                {
+                    charactorSet.messageLayer.Add("世界の平和は守られた！");
+                    turn = new Turn.Wait(charactorSet);
+                }
                 else
                     turn = new Turn.Start(charactorSet);
             }
-            if (charactorSet.player.HitPoint <= 0)
-                asd.Engine.ChangeScene(new Scene.GameOver());
+            if (charactorSet.player.HitPoint <= 0 && !(turn is Turn.Wait))
+            {
+                charactorSet.messageLayer.Add("死んじゃった・・・");
+                turn = new Turn.Wait(charactorSet);
+            }
         }
         protected override void OnDispose()
         {

@@ -74,6 +74,7 @@
     <Compile Include="Scene\Game.cs" />
     <Compile Include="Scene\GameOver.cs" />
     <Compile Include="Scene\Title.cs" />
+    <Compile Include="Turn\Wait.cs" />
     <Compile Include="Turn\Enemy.cs" />
     <Compile Include="Turn\Player.cs" />
     <Compile Include="Turn\Start.cs" />
