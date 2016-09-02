@@ -3,5 +3,5 @@
 
 * [キャラクター](charactor.md)
 
-
+* [方針](policy.md)
 
