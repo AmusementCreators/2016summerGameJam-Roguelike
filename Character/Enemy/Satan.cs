@@ -19,7 +19,7 @@ namespace _2WeeksGameJam_Roguelike.Character.Enemy
         public Satan(CharactorSet set, asd.Vector2DF pos) :
             base(set, pos)
         {
-            Src = new asd.RectF(Consts.Chip.Width*3, Consts.Chip.Height, Consts.Chip.Width, Consts.Chip.Height);
+            Src = new asd.RectF(Consts.Chip.Width*5, Consts.Chip.Height, Consts.Chip.Width, Consts.Chip.Height);
         }
         public override int MaxActionPoint { get { return 50; } }
         public override int MaxHitPoint { get { return 50; } }
