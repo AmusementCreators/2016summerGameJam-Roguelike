@@ -71,10 +71,21 @@ namespace _2WeeksGameJam_Roguelike.Character
 
         protected override void OnGetItem(Item.Item item)
         {
+            charactorSet.messageLayer.Add(item.Name() + "を手に入れた！");
+            if (charactorSet.stage == CharactorSet.Stage.Tutorial)
+            {
+                if (item is Item.Life)
+                    charactorSet.messageLayer.Add("緑のアイテムを取るとHitPointが回復します");
+                if (item is Item.Power)
+                    charactorSet.messageLayer.Add("赤のアイテムを取るとPowerが上がります");
+                if (item is Item.View)
+                    charactorSet.messageLayer.Add("青のアイテムを取ると索敵範囲が広がります");
+            }
+
             if (item is Item.Life)
-                HitPoint += 5;
+                HitPoint++;
             if (item is Item.Power)
-                power += 1;
+                power++;
             if (item is Item.View)
                 viewPoint *= 2;
             item.Dispose();

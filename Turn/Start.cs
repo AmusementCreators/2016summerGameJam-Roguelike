@@ -26,27 +26,27 @@ namespace _2WeeksGameJam_Roguelike.Turn
             set.items.RemoveAll(e => !e.IsAlive);
             set.messageLayer.Clear();
 
-            set.stageNumber++;
             String map_filename = "";
-            switch (set.stageNumber)
+            switch (set.stage)
             {
-                case 1:
+                case Character.CharactorSet.Stage.Tutorial:
+                    map_filename = "tutorial";
+                    set.messageLayer.Add("チュートリアルを始めます");
+                    set.messageLayer.Add("カーソルキーで移動とかできます");
+                    set.messageLayer.Add("目の前にある薬品を取ってみよう");
+                    break;
+                case Character.CharactorSet.Stage.Stage1:
                     map_filename = "field1";
                     set.messageLayer.Add("冒険を開始して早々スライムの群れに遭遇した");
                     set.messageLayer.Add("これを切り抜けないと向こうの村にたどり着けない");
-                    set.messageLayer.Add("Zキーを押してゲーム開始");
                     break;
-                case 2:
+                case Character.CharactorSet.Stage.Stage2:
                     map_filename = "field2";
                     set.messageLayer.Add("スライムの群れを切り抜けたと思ったら今度はゴーレムだ！");
-                    set.messageLayer.Add("Zキーを押してゲーム開始");
                     break;
-                case 3:
+                case Character.CharactorSet.Stage.Stage3:
                     map_filename = "field3";
                     set.messageLayer.Add("とうとう魔王のいるところまで来たぞ！！");
-                    set.messageLayer.Add("Zキーを押してゲーム開始");
-                    break;
-                default:
                     break;
             }
             set.field?.Dispose();

@@ -106,10 +106,11 @@ namespace _2WeeksGameJam_Roguelike.Character
 
     class CharactorSet
     {
-        public CharactorSet()
+        public CharactorSet(Stage stage = Stage.Stage1)
         {
+            this.stage = stage;
             player = new Character.Player(this);
-            field = new Character.Field("Resource/Maps/debug", this);
+            field = new Character.Field("Resource/Maps/field1", this);
         }
         public Layer.Message messageLayer = new Layer.Message();
         public asd.CameraObject2D camera = new asd.CameraObject2D();
@@ -118,9 +119,16 @@ namespace _2WeeksGameJam_Roguelike.Character
         public List<Item.Item> items = new List<Item.Item>();
         public Field field;
 
-        public int stageNumber = 0;
+        public enum Stage
+        {
+            Tutorial,
+            Stage1,
+            Stage2,
+            Stage3
+        }
         public asd.Layer2D gameLayer = new asd.Layer2D();
 
         public Charactor selectedCharactor;
+        public Stage stage;
     }
 }

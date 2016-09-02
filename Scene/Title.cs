@@ -31,7 +31,8 @@ namespace _2WeeksGameJam_Roguelike.Scene
 
             var label = new asd.TextObject2D();
             label.Font = Resource.Font;
-            label.Text = "ゲームを始めるにはZキーを押してね";
+            label.Color = new asd.Color(0, 0, 0);
+            label.Text = "ゲームを始めるにはZキーを押してね\nチュートリアルはXキーです";
             label.Position = asd.Engine.WindowSize.To2DF() / 2 + new asd.Vector2DF(0, 64);
             label.CenterPosition = Resource.Font.CalcTextureSize(label.Text, asd.WritingDirection.Horizontal).To2DF() / 2;
 
@@ -46,6 +47,8 @@ namespace _2WeeksGameJam_Roguelike.Scene
         {
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Z) == asd.KeyState.Push)
                 asd.Engine.ChangeScene(new Scene.Game());
+            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.X) == asd.KeyState.Push)
+                asd.Engine.ChangeScene(new Scene.Tutorial());
         }
 
         protected override void OnDispose()
