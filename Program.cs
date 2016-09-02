@@ -34,6 +34,8 @@ namespace _2WeeksGameJam_Roguelike
             {
                 if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Escape) == asd.KeyState.Push)
                     break;
+                if (Resource.IsQuit)
+                    break;
                 asd.Engine.Update();
             }
             asd.Engine.Terminate();

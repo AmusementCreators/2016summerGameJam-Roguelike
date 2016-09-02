@@ -23,6 +23,8 @@ namespace _2WeeksGameJam_Roguelike
         static public asd.SoundSource TitleSong;
         static public asd.SoundSource GameSong;
         static public System.Random Rand = new Random();
+        static public bool IsQuit { get; set; } = false;
+
         static public void Init()
         {
             BigFont = asd.Engine.Graphics.CreateDynamicFont("Resource/PixelMplus10-Regular.ttf", 64, new asd.Color(0, 0, 0, 255), 0, new asd.Color(0, 0, 0, 255));
