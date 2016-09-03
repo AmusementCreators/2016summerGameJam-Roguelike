@@ -49,12 +49,14 @@ namespace _2WeeksGameJam_Roguelike.Scene
 
             if (charactorSet.enemies.Count(e => e.IsAlive) == 0 && !(turn is Turn.Wait))
             {
+                charactorSet.messageLayer.Add("敵をすべて倒したら次のステージに移動します");
                 charactorSet.messageLayer.Add("チュートリアル終わり！！");
                 turn = new Turn.Wait(charactorSet);
             }
             if (charactorSet.player.HitPoint <= 0 && !(turn is Turn.Wait))
             {
                 charactorSet.messageLayer.Add("死んじゃった・・・");
+                charactorSet.messageLayer.Add("プレイヤーのHPが0になったらゲームオーバーです");
                 turn = new Turn.Wait(charactorSet);
             }
         }
