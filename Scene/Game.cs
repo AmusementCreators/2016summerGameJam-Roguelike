@@ -53,15 +53,21 @@ namespace _2WeeksGameJam_Roguelike.Scene
 
             if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Z) == asd.KeyState.Push && turn is Turn.Wait)
             {
-                if (charactorSet.stage == Character.CharactorSet.Stage.Stage3)
+                if (charactorSet.enemies.Count(e => e.IsAlive) == 0 && charactorSet.stage == Character.CharactorSet.Stage.Stage5)
+                {
                     asd.Engine.ChangeScene(new Scene.Clear());
+                    return;
+                }
 
                 if (charactorSet.player.HitPoint <= 0)
+                {
                     asd.Engine.ChangeScene(new Scene.GameOver());
+                    return;
+                }
             }
             if (charactorSet.enemies.Count(e => e.IsAlive) == 0 && !(turn is Turn.Wait))
             {
-                if (charactorSet.stage == Character.CharactorSet.Stage.Stage3)
+                if (charactorSet.stage == Character.CharactorSet.Stage.Stage5)
                 {
                     charactorSet.messageLayer.Add("世界の平和は守られた！");
                     turn = new Turn.Wait(charactorSet);
@@ -75,6 +81,12 @@ namespace _2WeeksGameJam_Roguelike.Scene
                             break;
                         case Character.CharactorSet.Stage.Stage2:
                             charactorSet.stage = Character.CharactorSet.Stage.Stage3;
+                            break;
+                        case Character.CharactorSet.Stage.Stage3:
+                            charactorSet.stage = Character.CharactorSet.Stage.Stage4;
+                            break;
+                        case Character.CharactorSet.Stage.Stage4:
+                            charactorSet.stage = Character.CharactorSet.Stage.Stage5;
                             break;
                         default:
                             break;

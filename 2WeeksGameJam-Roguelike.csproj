@@ -89,6 +89,12 @@
     <None Include="Resource\Maps\field3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Resource\Maps\field4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resource\Maps\field5">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resource\Maps\tutorial">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

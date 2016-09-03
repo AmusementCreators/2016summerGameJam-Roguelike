@@ -124,7 +124,9 @@ namespace _2WeeksGameJam_Roguelike.Character
             Tutorial,
             Stage1,
             Stage2,
-            Stage3
+            Stage3,
+            Stage4,
+            Stage5
         }
         public asd.Layer2D gameLayer = new asd.Layer2D();
 

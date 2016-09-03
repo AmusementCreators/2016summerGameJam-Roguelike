@@ -37,15 +37,19 @@ namespace _2WeeksGameJam_Roguelike.Turn
                     break;
                 case Character.CharactorSet.Stage.Stage1:
                     map_filename = "field1";
-                    set.messageLayer.Add("冒険を開始して早々スライムの群れに遭遇した");
-                    set.messageLayer.Add("これを切り抜けないと向こうの村にたどり着けない");
+                    set.messageLayer.Add("冒険のはじまりだ！");
                     break;
                 case Character.CharactorSet.Stage.Stage2:
                     map_filename = "field2";
-                    set.messageLayer.Add("スライムの群れを切り抜けたと思ったら今度はゴーレムだ！");
                     break;
                 case Character.CharactorSet.Stage.Stage3:
                     map_filename = "field3";
+                    break;
+                case Character.CharactorSet.Stage.Stage4:
+                    map_filename = "field4";
+                    break;
+                case Character.CharactorSet.Stage.Stage5:
+                    map_filename = "field5";
                     set.messageLayer.Add("とうとう魔王のいるところまで来たぞ！！");
                     break;
             }
@@ -62,10 +66,7 @@ namespace _2WeeksGameJam_Roguelike.Turn
             charactorSet.camera.Src = new asd.RectI(charactorSet.field.Size() / 2 - asd.Engine.WindowSize / 2, asd.Engine.WindowSize);
             charactorSet.camera.Dst = new asd.RectI(new asd.Vector2DI(), asd.Engine.WindowSize);
 
-            if (asd.Engine.Keyboard.GetKeyState(asd.Keys.Z) == asd.KeyState.Push)
-                return new Player(charactorSet);
-            else
-                return this;
+            return new Player(charactorSet);
         }
     }
 }
